@@ -1,5 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./features/authSlice";
+import motorbikeReducer from "./features/motorbikeSlice";
+import tourReducer from "./features/tourSlice";
 import { persistReducer, persistStore } from "redux-persist";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 
@@ -31,6 +33,8 @@ const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
+    motorbike: motorbikeReducer,
+    tour: tourReducer,
   },
   devTools: true,
   middleware: (getDefaultMiddleware) =>

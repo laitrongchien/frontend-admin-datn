@@ -53,5 +53,34 @@ body {
 }
 
 .form-input {
-  @apply p-2.5 bg-white border border-gray-300 rounded-lg w-full outline-1 outline-primary;
+  @apply p-2.5 bg-white border border-gray-300 rounded-lg outline-1 outline-primary;
+}
+
+@media (min-width: 992px) {
+  .layout-sidebar {
+    @apply w-[270px] h-[100vh] fixed mt-4 transition-transform duration-200 px-2 py-4 rounded-xl shadow-md bg-white left-6 border border-gray-200;
+  }
+
+  .layout-content {
+    @apply min-h-[calc(100vh-80px)] mt-4 px-6 transition-all duration-200 ml-[300px];
+  }
+}
+
+@media (max-width: 991px) {
+  .layout-sidebar {
+    @apply w-[270px] h-[100vh] left-0 top-0 fixed transition-transform duration-200 px-2 py-4 shadow-md bg-white z-[1000];
+    transform: translateX(-100%);
+  }
+
+  .layout-mobile-active {
+    transform: translate(0);
+  }
+
+  .layout-content {
+    @apply min-h-[calc(100vh-80px)] mt-4 px-6 transition-all duration-200 ml-0;
+  }
+
+  .layout-overlay {
+    @apply fixed top-0 left-0 w-full h-full z-[999] bg-[#00000066] hidden;
+  }
 }

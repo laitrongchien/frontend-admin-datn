@@ -17,7 +17,9 @@ const SideBarMenuItem = ({ item }: { item: any }) => {
       {item.subMenu ? (
         <div className="min-w-[18px] mb-2">
           <button
-            className={`w-full flex items-center min-h-[40px] text-black py-2 px-4 hover:bg-hoverItem hover:text-primary rounded-md transition duration-200`}
+            className={`w-full flex items-center min-h-[40px] text-black py-2 px-4 hover:bg-hoverItem hover:text-primary rounded-md transition duration-200 ${
+              pathname.includes(item.path) && "text-white bg-primary"
+            }`}
             onClick={toggleSubMenu}
           >
             <div className="min-w-[20px]">{item.icon}</div>
@@ -37,7 +39,9 @@ const SideBarMenuItem = ({ item }: { item: any }) => {
                     key={index}
                     href={subItem.path}
                     className={`w-full block py-2 px-4 hover:text-primary transition duration-200 rounded-md ml-[27px] ${
-                      subItem.path === pathname ? "text-primary" : "text-black"
+                      pathname.includes(subItem.path)
+                        ? "text-primary"
+                        : "text-black"
                     }`}
                   >
                     <span>{subItem.title}</span>
@@ -51,7 +55,10 @@ const SideBarMenuItem = ({ item }: { item: any }) => {
         <Link
           href={item.path}
           className={`flex items-center min-h-[40px] text-black py-2 px-4 mb-2 hover:text-primary hover:bg-hoverItem rounded-md transition duration-200 ${
-            item.path === pathname && "text-primary bg-hoverItem"
+            (item.path === "/" && pathname === item.path) ||
+            (item.path !== "/" && pathname.startsWith(item.path))
+              ? "text-white bg-primary"
+              : ""
           }`}
         >
           <div className="min-w-[20px]">{item.icon}</div>

@@ -14,8 +14,10 @@ export const login = createAsyncThunk(
   async (data: FormData, { rejectWithValue }) => {
     try {
       const res = await authService.login(data);
-      setUser(res.data);
-      return res.data;
+      if (res.data.role === "admin") {
+        setUser(res.data);
+        return res.data;
+      } else toast.error("Đăng nhập thất bại");
     } catch (error: any) {
       toast.error("Đăng nhập thất bại");
       if (error.response && error.response.data.message) {
@@ -82,13 +84,19 @@ const authSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     });
+    builder.addCase(logout.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
     builder.addCase(logout.fulfilled, (state, action) => {
       state.isAuthenticated = false;
+      state.loading = false;
       state.error = null;
       state.user = null;
     });
     builder.addCase(logout.rejected, (state, action) => {
       state.isAuthenticated = false;
+      state.loading = false;
       state.error = action.payload;
       state.user = null;
     });

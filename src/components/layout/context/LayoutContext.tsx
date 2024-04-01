@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import { LayoutContextProps } from "@/types/layout";
 export const LayoutContext = createContext({} as LayoutContextProps);
 

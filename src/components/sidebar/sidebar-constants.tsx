@@ -1,5 +1,6 @@
-import { FaMotorcycle } from "react-icons/fa";
+import { FaFlagCheckered, FaMotorcycle } from "react-icons/fa";
 import { LuHome } from "react-icons/lu";
+import { MdReceiptLong } from "react-icons/md";
 
 export const sidebar_items = [
   {
@@ -8,21 +9,28 @@ export const sidebar_items = [
     icon: <LuHome />,
   },
   {
-    title: "Xe",
+    title: "Quản lý tours",
+    path: "/tours",
+    icon: <FaFlagCheckered />,
+  },
+  {
+    title: "Quản lý mẫu xe",
+    path: "/motorbikes",
     icon: <FaMotorcycle />,
+  },
+  {
+    title: "Quản lý đơn",
+    icon: <MdReceiptLong />,
+    path: "/bills",
     subMenu: true,
     subMenuItems: [
-      { title: "fdfdfd", path: "/hghg" },
-      { title: "fđ", path: "/hhg" },
+      { title: "Đơn đặt tour", path: "/bills/tour-booking" },
+      { title: "Đơn thuê xe", path: "/bills/motor-rental" },
     ],
   },
   {
-    title: "Xe",
+    title: "Quản lý tình trạng xe",
+    path: "/motorbike-identifications",
     icon: <FaMotorcycle />,
-    subMenu: true,
-    subMenuItems: [
-      { title: "fdfdfd", path: "/hghg" },
-      { title: "fđ", path: "/hhg" },
-    ],
   },
 ];

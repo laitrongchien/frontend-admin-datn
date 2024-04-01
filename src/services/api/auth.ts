@@ -12,7 +12,6 @@ const logout = async () => {
 const refreshToken = async () => {
   try {
     const res = await axios.get("/auth/refresh_token");
-    console.log(res);
     setUser(res.data);
     return res.data.access_token;
   } catch (err) {

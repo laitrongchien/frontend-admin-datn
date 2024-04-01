@@ -15,6 +15,9 @@ const config: Config = {
       },
       colors: {
         primary: "#03c9d7",
+        success: "#1abf57",
+        pending: "#ff7718",
+        error: "#dc2626",
         hoverItem: "#e5fafb",
       },
     },

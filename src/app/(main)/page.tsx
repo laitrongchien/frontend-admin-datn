@@ -14,7 +14,7 @@ const Dashboard = () => {
     }
   }, [user, router]);
 
-  return <div className="min-h-[calc(100vh-80px)] bg-white"></div>;
+  return <div></div>;
 };
 
 export default Dashboard;
