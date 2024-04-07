@@ -6,7 +6,14 @@ const getAllMotorbikeIdentifications = async () => {
   return res;
 };
 
+const updateMotorIdentification = async (updateData: any) => {
+  return await axios.put(
+    "/identification/update-motor-identification",
+    updateData
+  );
+};
 
 export const motorIdentificationService = {
   getAllMotorbikeIdentifications,
+  updateMotorIdentification,
 };

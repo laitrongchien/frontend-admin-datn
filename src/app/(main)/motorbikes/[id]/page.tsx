@@ -32,7 +32,7 @@ const MotorbikeDetail = ({ params }: { params: { id: string } }) => {
     );
 
   return (
-    <div className="p-4">
+    <div className="bg-white p-8 min-h-[calc(100vh-80px)] rounded-xl shadow-md border border-gray-200">
       <Link href={"/motorbikes"} className="flex items-center gap-2">
         <MdArrowBackIos />
         <span>Quay lại</span>

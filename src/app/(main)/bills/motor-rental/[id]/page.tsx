@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { MdArrowBackIos } from "react-icons/md";
 import { rentalService } from "@/services/api/rental";
+import { motorIdentificationService } from "@/services/api/identification";
 import Loading from "@/components/Loading";
 import { formatCurrency, formatTime, formatTimeDate } from "@/utils/common";
+import { toast } from "react-toastify";
 
 const MotorRentalDetail = ({ params }: { params: { id: string } }) => {
   const [motorRentalDetail, setMotorRentalDetail] = useState<any>();
@@ -34,6 +36,32 @@ const MotorRentalDetail = ({ params }: { params: { id: string } }) => {
         motorRentalDetailId,
         identificationsRental
       );
+      await Promise.all(
+        identificationsRental.map(async (identification: string) => {
+          await motorIdentificationService.updateMotorIdentification({
+            identification,
+            isUsed: true,
+          });
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleUpdateRentalStatus = async () => {
+    try {
+      await rentalService.updateRentalStatus(motorRentalDetailId, rentalStatus);
+      if (rentalStatus === "not-received" || rentalStatus === "returned")
+        await Promise.all(
+          identificationsRental.map(async (identification: string) => {
+            await motorIdentificationService.updateMotorIdentification({
+              identification,
+              isUsed: false,
+            });
+          })
+        );
+      toast.success("Cập nhật trạng thái đơn thuê thành công");
     } catch (error) {
       console.log(error);
     }
@@ -61,7 +89,7 @@ const MotorRentalDetail = ({ params }: { params: { id: string } }) => {
     );
 
   return (
-    <div className="px-4">
+    <div className="bg-white py-4 px-8 min-h-[calc(100vh-80px)] rounded-xl shadow-md border border-gray-200">
       <Link href={"/bills/motor-rental"} className="flex items-center gap-2">
         <MdArrowBackIos />
         <span>Quay lại</span>
@@ -155,7 +183,7 @@ const MotorRentalDetail = ({ params }: { params: { id: string } }) => {
       <div className="flex justify-end">
         <button
           className="px-4 py-2 rounded-md text-white bg-primary mt-4"
-          // onClick={handleUpdateBookingStatus}
+          onClick={handleUpdateRentalStatus}
         >
           Lưu
         </button>

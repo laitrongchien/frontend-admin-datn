@@ -53,7 +53,7 @@ const TourBookingDetail = ({ params }: { params: { id: string } }) => {
     );
 
   return (
-    <div className="px-4">
+    <div className="bg-white py-4 px-8 min-h-[calc(100vh-80px)] rounded-xl shadow-md border border-gray-200">
       <Link href={"/bills/tour-booking"} className="flex items-center gap-2">
         <MdArrowBackIos />
         <span>Quay lại</span>

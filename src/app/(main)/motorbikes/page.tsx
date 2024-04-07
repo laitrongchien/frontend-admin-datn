@@ -139,7 +139,7 @@ const Motorbikes = () => {
     );
 
   return (
-    <div>
+    <div className="bg-white p-4 min-h-[calc(100vh-80px)] rounded-xl shadow-md border border-gray-200">
       <h1 className="font-semibold">Tất cả mẫu xe cho thuê</h1>
       <div className="flex-between mt-2">
         <button

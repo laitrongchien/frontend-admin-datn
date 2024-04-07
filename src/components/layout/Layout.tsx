@@ -52,9 +52,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <Sidebar />
       </div>
       <div className={contentClasses}>
-        <div className="bg-white p-4 min-h-[calc(100vh-80px)] rounded-xl shadow-md border border-gray-200">
-          {children}
-        </div>
+        <div>{children}</div>
       </div>
       <div className={overlayClasses}></div>
     </div>

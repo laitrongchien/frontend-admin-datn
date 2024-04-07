@@ -1,6 +1,6 @@
 import { FaFlagCheckered, FaMotorcycle } from "react-icons/fa";
 import { LuHome } from "react-icons/lu";
-import { MdReceiptLong } from "react-icons/md";
+import { MdOutlineSync, MdReceiptLong } from "react-icons/md";
 
 export const sidebar_items = [
   {
@@ -16,11 +16,11 @@ export const sidebar_items = [
   {
     title: "Quản lý mẫu xe",
     path: "/motorbikes",
-    icon: <FaMotorcycle />,
+    icon: <FaMotorcycle size={18} />,
   },
   {
     title: "Quản lý đơn",
-    icon: <MdReceiptLong />,
+    icon: <MdReceiptLong size={18} />,
     path: "/bills",
     subMenu: true,
     subMenuItems: [
@@ -31,6 +31,6 @@ export const sidebar_items = [
   {
     title: "Quản lý tình trạng xe",
     path: "/motorbike-identifications",
-    icon: <FaMotorcycle />,
+    icon: <MdOutlineSync size={20} />,
   },
 ];

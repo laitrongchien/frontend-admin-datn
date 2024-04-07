@@ -115,7 +115,7 @@ const MotorbikeIdentifications = () => {
     );
 
   return (
-    <div>
+    <div className="bg-white p-4 min-h-[calc(100vh-80px)] rounded-xl shadow-md border border-gray-200">
       <h1 className="font-semibold">Tình trạng xe hiện tại</h1>
       <div className="mt-2 flex gap-6">
         {/* <input
