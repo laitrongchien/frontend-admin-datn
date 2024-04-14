@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FaEllipsisVertical, FaSquareCheck } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
+import { FaSquareCheck } from "react-icons/fa6";
+import { FaRegEye } from "react-icons/fa";
 import TableData from "@/components/table/TableData";
 import { motorIdentificationService } from "@/services/api/identification";
 import Loading from "@/components/Loading";
 
 const MotorbikeIdentifications = () => {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [motorbikeIdentifications, setMotorbikeIdentifications] = useState([]);
   const [searchIdentification, setSearchIdentification] = useState("");
@@ -103,7 +106,16 @@ const MotorbikeIdentifications = () => {
     {
       name: "Hành động",
       center: true,
-      cell: (row: any) => <FaEllipsisVertical size={20} color="#666" />,
+      cell: (row: any) => (
+        <FaRegEye
+          color="#03c9d7"
+          size={20}
+          className="cursor-pointer"
+          onClick={() =>
+            router.push(`/motorbike-identifications/${row.identification}`)
+          }
+        />
+      ),
     },
   ];
 
