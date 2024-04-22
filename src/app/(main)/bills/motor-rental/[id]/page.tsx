@@ -15,6 +15,7 @@ const MotorRentalDetail = ({ params }: { params: { id: string } }) => {
   const [rentalStatus, setRentalStatus] = useState("");
   const motorRentalDetailId = params.id;
   const [identificationsRental, setIdentificationsRental] = useState<any[]>([]);
+  const [availableMotors, setAvailableMotors] = useState([]);
 
   useEffect(() => {
     if (motorRentalDetail?.status) {
@@ -44,6 +45,7 @@ const MotorRentalDetail = ({ params }: { params: { id: string } }) => {
           });
         })
       );
+      toast.success("Cập nhật xe cho thuê thành công");
     } catch (error) {
       console.log(error);
     }
@@ -81,6 +83,18 @@ const MotorRentalDetail = ({ params }: { params: { id: string } }) => {
     }
   }, [motorRentalDetailId]);
 
+  useEffect(() => {
+    if (motorRentalDetail?.motorbikes[0].motorbike._id) {
+      const fetchAllAvailableMotor = async () => {
+        const res = await motorIdentificationService.getAllAvailableMotor(
+          motorRentalDetail?.motorbikes[0].motorbike._id
+        );
+        setAvailableMotors(res.data);
+      };
+      fetchAllAvailableMotor();
+    }
+  }, [motorRentalDetail?.motorbikes]);
+
   if (loading)
     return (
       <div className="h-[calc(100vh-80px-36px)]">
@@ -105,23 +119,37 @@ const MotorRentalDetail = ({ params }: { params: { id: string } }) => {
               <p>Tên xe: {data.motorbike.name}</p>
               <p>Giá thuê: {formatCurrency(data.motorbike.price)}</p>
               <p>Ngày nhận: {formatTime(data.startDate)}</p>
-              <p>Ngày trả: {formatTime(data.finishDate)}</p>
+              <p>Ngày dự kiến trả: {formatTime(data.finishDate)}</p>
               <p>Số lượng xe thuê: {data.numMotorbikes}</p>
               <p>
                 Đặt thuê xe lúc: {formatTimeDate(motorRentalDetail.createdAt)}
               </p>
-              <h1 className="mt-2 font-semibold">Biển số xe cho thuê</h1>
+              <h1 className="mt-2 font-semibold">
+                Biển số xe cho thuê:{" "}
+                <span>{identificationsRental.join(", ")}</span>
+              </h1>
               {[...Array(data.numMotorbikes)].map((_, index) => (
                 <div key={index}>
-                  <input
-                    className="w-40 form-input mt-2"
-                    value={identificationsRental[index]}
+                  <select
+                    className="w-52 form-input mt-2"
                     onChange={(e) => {
                       const newIdentifications = [...identificationsRental];
                       newIdentifications[index] = e.target.value;
                       setIdentificationsRental(newIdentifications);
                     }}
-                  />
+                  >
+                    <option disabled selected>
+                      Cập nhật xe cho thuê
+                    </option>
+                    {availableMotors.map((availableMotor: any) => (
+                      <option
+                        key={availableMotor.id}
+                        value={availableMotor.identification}
+                      >
+                        {availableMotor.identification}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               ))}
             </div>
@@ -139,47 +167,64 @@ const MotorRentalDetail = ({ params }: { params: { id: string } }) => {
           <p>Tên: {motorRentalDetail?.user.email}</p>
         </div>
       </div>
-      <div className="mt-8 flex-between">
-        <h1>
-          Trạng thái thanh toán:{" "}
-          <span
-            className={`font-semibold ${
-              motorRentalDetail?.paymentType === "payAll"
-                ? "text-success"
-                : "text-pending"
-            }`}
-          >
-            {motorRentalDetail?.paymentType === "payAll"
-              ? "Thanh toán toàn bộ"
-              : "Thanh toán trước 20%"}
-          </span>
-        </h1>
+      <div className="mt-8 flex justify-between">
         <div>
-          <p>
-            Tổng tiền phải trả:{" "}
-            <span className="font-semibold">
+          <h1>
+            Trạng thái thanh toán:{" "}
+            <span
+              className={`font-semibold ${
+                motorRentalDetail?.paymentType === "payAll"
+                  ? "text-success"
+                  : "text-pending"
+              }`}
+            >
+              {motorRentalDetail?.paymentType === "payAll"
+                ? "Thanh toán toàn bộ"
+                : "Thanh toán trước 20%"}
+            </span>
+          </h1>
+          <h1 className="mt-4">
+            Trạng thái đơn thuê:{" "}
+            {motorRentalDetail?.status !== "returned" ? (
+              <select
+                className="form-input w-60 ml-6"
+                value={rentalStatus}
+                onChange={(e) => setRentalStatus(e.target.value)}
+              >
+                <option value="pending">Chờ nhận xe</option>
+                <option value="received">Đã nhận xe</option>
+                <option value="not-received">Không nhận xe</option>
+                <option value="returned">Đã trả xe</option>
+              </select>
+            ) : (
+              <span className="text-success font-semibold">Đã trả xe</span>
+            )}
+          </h1>
+        </div>
+        <div>
+          <p className="text-right">
+            Tổng tiền dự kiến:{" "}
+            <span className="font-semibold min-w-[85px] inline-block">
               {formatCurrency(motorRentalDetail?.totalPrice)}
             </span>
           </p>
+          <p className="text-right">
+            Đã thanh toán qua VNPay:{" "}
+            <span className="font-semibold min-w-[85px] inline-block">
+              {formatCurrency(motorRentalDetail?.totalPrice * 0.2)}
+            </span>
+          </p>
+          {rentalStatus === "received" && (
+            <p className="text-right">
+              Đã thanh toán tại điểm nhận xe:{" "}
+              <span className="font-semibold min-w-[85px] inline-block">
+                {formatCurrency(motorRentalDetail?.totalPrice * 0.8)}
+              </span>
+            </p>
+          )}
         </div>
       </div>
-      <h1 className="mt-4">
-        Trạng thái đơn thuê:{" "}
-        {motorRentalDetail?.status !== "returned" ? (
-          <select
-            className="form-input w-60 ml-6"
-            value={rentalStatus}
-            onChange={(e) => setRentalStatus(e.target.value)}
-          >
-            <option value="pending">Chờ nhận xe</option>
-            <option value="received">Đã nhận xe</option>
-            <option value="not-received">Không nhận xe</option>
-            <option value="returned">Đã trả xe</option>
-          </select>
-        ) : (
-          <span className="text-success font-semibold">Đã trả xe</span>
-        )}
-      </h1>
+
       <div className="flex justify-end">
         <button
           className="px-4 py-2 rounded-md text-white bg-primary mt-4"

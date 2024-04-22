@@ -12,6 +12,13 @@ const getMotorByIdentification = async (identification: string) => {
   );
 };
 
+const createMotorIdentification = async (createData: any) => {
+  return await axios.post(
+    "/identification/create-motor-identification",
+    createData
+  );
+};
+
 const updateMotorIdentification = async (updateData: any) => {
   return await axios.put(
     "/identification/update-motor-identification",
@@ -19,8 +26,21 @@ const updateMotorIdentification = async (updateData: any) => {
   );
 };
 
+const deleteMotorIdentification = async (id: string) => {
+  return await axios.delete(`identification/delete-motor-identification/${id}`);
+};
+
+const getAllAvailableMotor = async (motorbikeId: string) => {
+  return await axios.get(
+    `/identification/get-all-available-motor/${motorbikeId}`
+  );
+};
+
 export const motorIdentificationService = {
   getAllMotorbikeIdentifications,
+  createMotorIdentification,
   updateMotorIdentification,
+  deleteMotorIdentification,
   getMotorByIdentification,
+  getAllAvailableMotor,
 };

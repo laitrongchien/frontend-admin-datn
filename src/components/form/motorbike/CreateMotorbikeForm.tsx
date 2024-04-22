@@ -35,10 +35,10 @@ const CreateMotorbikeForm = ({ toggleModal }: { toggleModal: () => void }) => {
     e.preventDefault();
     try {
       await dispatch(createMotorbike(formData)).unwrap();
-      toast.success("Thêm mới xe motor thành công");
+      toast.success("Thêm mới mẫu xe thành công");
       toggleModal();
     } catch (error) {
-      toast.error("Có lỗi xảy ra, tên motor đã tồn tại");
+      toast.error("Có lỗi xảy ra, tên mẫu xe đã tồn tại");
     }
     // console.log(formData);
   };
@@ -65,7 +65,9 @@ const CreateMotorbikeForm = ({ toggleModal }: { toggleModal: () => void }) => {
 
   return (
     <div className="w-[800px] p-4">
-      <h1 className="text-2xl font-semibold text-center">Thêm mới xe motor</h1>
+      <h1 className="text-2xl font-semibold text-center">
+        Thêm mới mẫu xe máy
+      </h1>
       <form className="mt-4" onSubmit={handleSubmit}>
         <div className="flex-between flex-wrap">
           <div className="basis-[48%] mb-4">

@@ -44,7 +44,7 @@ const UpdateMotorbikeForm = ({
       toast.success("Cập nhật thông tin xe motor thành công");
       toggleModal();
     } catch (error) {
-      toast.error("Có lỗi xảy ra, tên motor đã tồn tại");
+      toast.error("Có lỗi xảy ra, tên mẫu xe đã tồn tại");
     }
     // console.log(formData.fuelCapacity);
   };
@@ -62,7 +62,7 @@ const UpdateMotorbikeForm = ({
   return (
     <div className="w-[800px] p-4">
       <h1 className="text-2xl font-semibold text-center">
-        Cập nhật thông tin xe motor
+        Cập nhật thông tin mẫu xe
       </h1>
       <form className="mt-4" onSubmit={handleSubmit}>
         <div className="flex-between flex-wrap">

@@ -12,15 +12,15 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-10 h-16 w-full bg-white border-b border-gray-200 flex-between px-10">
       <LuMenu size={28} className="cursor-pointer" onClick={onMenuToggle} />
-      {/* <Link href={"/"}>
+      <Link href={"/"}>
         <Image
-          src="/logo.png"
+          src="/logo.jpg"
           alt="logo"
-          width={237}
-          height={27}
-          className="w-[237px] h-[27px]"
+          width={259}
+          height={194}
+          className="h-[60px] object-cover w-[120px]"
         />
-      </Link> */}
+      </Link>
       <div>
         <DropdownUser />
       </div>

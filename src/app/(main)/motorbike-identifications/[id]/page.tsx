@@ -5,39 +5,40 @@ import Link from "next/link";
 import { MdArrowBackIos } from "react-icons/md";
 import Loading from "@/components/Loading";
 import { motorIdentificationService } from "@/services/api/identification";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 const IdentificationDetail = ({ params }: { params: { id: string } }) => {
   const [motorIdentificationDetail, setMotorIdentificationDetail] =
     useState<any>();
   const [loading, setLoading] = useState(false);
-  const [motorStatus, setMotorStatus] = useState("");
-  const [rentStatus, setRentStatus] = useState("");
+  // const [motorStatus, setMotorStatus] = useState("");
+  // const [rentStatus, setRentStatus] = useState("");
   const motorIdentification = params.id;
 
-  //   const handleUpdateBookingStatus = async () => {
-  //     try {
-  //       await bookingService.updateTourBookingStatus(
-  //         bookingTourId,
-  //         bookingStatus
-  //       );
-  //       toast.success("Cập nhật trạng thái thành công");
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
+  // const handleUpdateMotorStatus = async () => {
+  //   try {
+  //     await motorIdentificationService.updateMotorIdentification({
+  //       identification: motorIdentification,
+  //       status: motorStatus,
+  //       isUsed: rentStatus === "idle" ? false : true,
+  //     });
+  //     toast.success("Đã cập nhật tình trạng xe");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    if (motorIdentificationDetail?.status) {
-      setMotorStatus(motorIdentificationDetail?.status);
-    }
-  }, [motorIdentificationDetail]);
+  // useEffect(() => {
+  //   if (motorIdentificationDetail?.status) {
+  //     setMotorStatus(motorIdentificationDetail?.status);
+  //   }
+  // }, [motorIdentificationDetail]);
 
-  useEffect(() => {
-    if (motorIdentificationDetail?.isUsed) {
-      setRentStatus("rented");
-    } else setRentStatus("idle");
-  }, [motorIdentificationDetail]);
+  // useEffect(() => {
+  //   if (motorIdentificationDetail?.isUsed) {
+  //     setRentStatus("rented");
+  //   } else setRentStatus("idle");
+  // }, [motorIdentificationDetail]);
 
   useEffect(() => {
     if (motorIdentification) {
@@ -91,7 +92,16 @@ const IdentificationDetail = ({ params }: { params: { id: string } }) => {
               : "Kém"}
           </span>
         </h1>
-        <div className="mt-4">
+        <h1 className="mt-2">
+          Số km đã đi: {motorIdentificationDetail?.km_driven}
+        </h1>
+        <h1 className="mt-2">
+          Đời xe: {motorIdentificationDetail?.model_year}
+        </h1>
+        <h1 className="mt-2">
+          Số lần sửa chữa trước đó: {motorIdentificationDetail?.prev_broken}
+        </h1>
+        {/* <div className="mt-4">
           <span className="min-w-[120px] inline-block">Tình trạng:</span>
           <select
             className="form-input w-60 ml-2"
@@ -112,12 +122,15 @@ const IdentificationDetail = ({ params }: { params: { id: string } }) => {
             <option value="idle">Xe đang rỗi</option>
             <option value="rented">Đã được thuê/ đặt cọc</option>
           </select>
-        </div>
+        </div> */}
       </div>
 
-      <button className="px-4 py-2 rounded-md text-white bg-primary float-right mt-4">
+      {/* <button
+        className="px-4 py-2 rounded-md text-white bg-primary mt-4"
+        onClick={handleUpdateMotorStatus}
+      >
         Lưu
-      </button>
+      </button> */}
     </div>
   );
 };

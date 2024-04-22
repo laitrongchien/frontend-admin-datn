@@ -1,4 +1,5 @@
 import { FaFlagCheckered, FaMotorcycle } from "react-icons/fa";
+import { IoWarningOutline } from "react-icons/io5";
 import { LuHome } from "react-icons/lu";
 import { MdOutlineSync, MdReceiptLong } from "react-icons/md";
 
@@ -32,5 +33,10 @@ export const sidebar_items = [
     title: "Quản lý tình trạng xe",
     path: "/motorbike-identifications",
     icon: <MdOutlineSync size={20} />,
+  },
+  {
+    title: "Quản lý sự cố hỏng hóc",
+    path: "/gfgfgf",
+    icon: <IoWarningOutline size={20} />,
   },
 ];

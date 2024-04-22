@@ -2,34 +2,41 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { FaSquareCheck } from "react-icons/fa6";
-import { FaRegEye } from "react-icons/fa";
+import { FaRegEye, FaEdit, FaTrashAlt } from "react-icons/fa";
 import TableData from "@/components/table/TableData";
-import { motorIdentificationService } from "@/services/api/identification";
 import Loading from "@/components/Loading";
+import Modal from "@/components/Modal";
+import CreateMotorIdentificationForm from "@/components/form/motor-identification/CreateMotorIdentificationForm";
+import UpdateMotorIdentificationForm from "@/components/form/motor-identification/UpdateMotorIdentificationForm";
+import ConfirmDeleteMotorIdentification from "@/components/form/motor-identification/ConfirmDeleteMotorIdentification";
+import { fetchMotorIdentifications } from "@/store/features/motorIdentificationSlice";
 
 const MotorbikeIdentifications = () => {
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
-  const [motorbikeIdentifications, setMotorbikeIdentifications] = useState([]);
-  const [searchIdentification, setSearchIdentification] = useState("");
+  const dispatch = useAppDispatch();
   const [searchName, setSearchName] = useState("");
   const [performance, setPerformance] = useState("");
   const [status, setStatus] = useState("");
   const [rentStatus, setRentStatus] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState("");
+  const [selectedMotorIdentification, setSelectedMotorIdentification] =
+    useState();
+  const { motorIdentifications, loading } = useAppSelector(
+    (state) => state.motorIdentification
+  );
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
 
   useEffect(() => {
-    const fetchMotorbikeIdentifications = async () => {
-      setLoading(true);
-      const res =
-        await motorIdentificationService.getAllMotorbikeIdentifications();
-      setLoading(false);
-      setMotorbikeIdentifications(res.data);
-    };
-    fetchMotorbikeIdentifications();
-  }, []);
+    dispatch(fetchMotorIdentifications());
+  }, [dispatch]);
 
-  const filteredMotorbikeIdentifications = motorbikeIdentifications
+  const filteredMotorbikeIdentifications = motorIdentifications
     .filter((identification: any) =>
       identification.motorbike.name
         .toLowerCase()
@@ -60,6 +67,18 @@ const MotorbikeIdentifications = () => {
     {
       name: "Tên xe",
       selector: (row: any) => row?.motorbike.name,
+    },
+    {
+      name: "Đời xe",
+      selector: (row: any) => row?.model_year,
+    },
+    {
+      name: "Số km đã đi",
+      selector: (row: any) => row?.km_driven,
+    },
+    {
+      name: "Số lần sửa trước",
+      selector: (row: any) => row?.prev_broken,
     },
     {
       name: "Hiệu suất",
@@ -107,14 +126,36 @@ const MotorbikeIdentifications = () => {
       name: "Hành động",
       center: true,
       cell: (row: any) => (
-        <FaRegEye
-          color="#03c9d7"
-          size={20}
-          className="cursor-pointer"
-          onClick={() =>
-            router.push(`/motorbike-identifications/${row.identification}`)
-          }
-        />
+        <div className="flex items-center gap-2">
+          <FaRegEye
+            color="#03c9d7"
+            size={20}
+            className="cursor-pointer"
+            onClick={() =>
+              router.push(`/motorbike-identifications/${row.identification}`)
+            }
+          />
+          <FaEdit
+            color="#1abf57"
+            size={18}
+            className="cursor-pointer"
+            onClick={() => {
+              toggleModal();
+              setModalType("update");
+              setSelectedMotorIdentification(row);
+            }}
+          />
+          <FaTrashAlt
+            color="#dc2626"
+            size={16}
+            className="cursor-pointer"
+            onClick={() => {
+              toggleModal();
+              setModalType("delete");
+              setSelectedMotorIdentification(row);
+            }}
+          />
+        </div>
       ),
     },
   ];
@@ -129,6 +170,17 @@ const MotorbikeIdentifications = () => {
   return (
     <div className="bg-white p-4 min-h-[calc(100vh-80px)] rounded-xl shadow-md border border-gray-200">
       <h1 className="font-semibold">Tình trạng xe hiện tại</h1>
+      <div className="mt-2 flex gap-6">
+        <button
+          className="px-4 py-2 bg-primary rounded-md text-white"
+          onClick={() => {
+            toggleModal();
+            setModalType("create");
+          }}
+        >
+          Thêm xe
+        </button>
+      </div>
       <div className="mt-2 flex gap-6">
         {/* <input
           type="text"
@@ -173,6 +225,23 @@ const MotorbikeIdentifications = () => {
       <div className="border border-gray-200 rounded-lg mt-4">
         <TableData columns={columns} data={filteredMotorbikeIdentifications} />
       </div>
+      {showModal && (
+        <Modal toggleModal={toggleModal}>
+          {modalType === "create" ? (
+            <CreateMotorIdentificationForm toggleModal={toggleModal} />
+          ) : modalType === "create" ? (
+            <UpdateMotorIdentificationForm
+              toggleModal={toggleModal}
+              motorIdentification={selectedMotorIdentification}
+            />
+          ) : (
+            <ConfirmDeleteMotorIdentification
+              toggleModal={toggleModal}
+              motorIdentification={selectedMotorIdentification}
+            />
+          )}
+        </Modal>
+      )}
     </div>
   );
 };
