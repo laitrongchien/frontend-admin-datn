@@ -32,7 +32,7 @@ const Login = () => {
 
   return (
     <div className="flex-center h-screen p-6">
-      <div className="bg-white md:w-[500px] p-10 shadow-md rounded-lg">
+      <div className="bg-white md:w-[500px] p-10 rounded-lg border border-gray-300">
         <h1 className="text-2xl font-semibold text-center text-gray-900 mb-4">
           Đăng nhập
         </h1>

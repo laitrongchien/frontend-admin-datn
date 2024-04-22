@@ -229,7 +229,7 @@ const MotorbikeIdentifications = () => {
         <Modal toggleModal={toggleModal}>
           {modalType === "create" ? (
             <CreateMotorIdentificationForm toggleModal={toggleModal} />
-          ) : modalType === "create" ? (
+          ) : modalType === "update" ? (
             <UpdateMotorIdentificationForm
               toggleModal={toggleModal}
               motorIdentification={selectedMotorIdentification}
