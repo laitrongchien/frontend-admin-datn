@@ -116,7 +116,7 @@ const TourBooking = () => {
     );
 
   return (
-    <div className="bg-white p-4 min-h-[calc(100vh-80px)] rounded-xl shadow-md border border-gray-200">
+    <div className="bg-white p-4 min-h-[calc(100vh-80px)] rounded-xl border border-gray-300">
       <h1 className="font-semibold">Tất cả đơn đặt tour</h1>
       <div className="mt-2 flex gap-6">
         <input

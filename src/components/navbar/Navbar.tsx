@@ -10,7 +10,7 @@ import DropdownUser from "../dropdown/DropdownUser";
 const Navbar = () => {
   const { onMenuToggle } = useContext(LayoutContext);
   return (
-    <header className="sticky top-0 z-10 h-16 w-full bg-white border-b border-gray-200 flex-between px-10">
+    <header className="sticky top-0 z-10 h-16 w-full bg-white border-b border-gray-300 flex-between px-10">
       <LuMenu size={28} className="cursor-pointer" onClick={onMenuToggle} />
       <Link href={"/"}>
         <Image

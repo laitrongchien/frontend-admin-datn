@@ -18,7 +18,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: #f9fafb;
+  background-color: #eeeeee;
 }
 
 /* @layer utilities {
@@ -58,7 +58,7 @@ body {
 
 @media (min-width: 992px) {
   .layout-sidebar {
-    @apply w-[270px] h-[100vh] fixed mt-4 transition-transform duration-200 px-2 py-4 rounded-xl shadow-md bg-white left-6 border border-gray-200;
+    @apply w-[270px] h-[100vh] fixed mt-4 transition-transform duration-200 px-2 py-4 rounded-xl bg-white left-6 border border-gray-300;
   }
 
   .layout-content {
@@ -68,7 +68,7 @@ body {
 
 @media (max-width: 991px) {
   .layout-sidebar {
-    @apply w-[270px] h-[100vh] left-0 top-0 fixed transition-transform duration-200 px-2 py-4 shadow-md bg-white z-[1000];
+    @apply w-[270px] h-[100vh] left-0 top-0 fixed transition-transform duration-200 px-2 py-4 bg-white z-[1000];
     transform: translateX(-100%);
   }
 

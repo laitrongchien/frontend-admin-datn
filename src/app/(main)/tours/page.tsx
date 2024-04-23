@@ -126,7 +126,7 @@ const Tours = () => {
     );
 
   return (
-    <div className="bg-white p-4 min-h-[calc(100vh-80px)] rounded-xl shadow-md border border-gray-200">
+    <div className="bg-white p-4 min-h-[calc(100vh-80px)] rounded-xl border border-gray-300">
       <h1 className="font-semibold">Tất cả tour motor</h1>
       <button
         className="px-4 py-2 bg-primary rounded-md text-white mt-2"

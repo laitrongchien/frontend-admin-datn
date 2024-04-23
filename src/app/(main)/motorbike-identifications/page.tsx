@@ -168,7 +168,7 @@ const MotorbikeIdentifications = () => {
     );
 
   return (
-    <div className="bg-white p-4 min-h-[calc(100vh-80px)] rounded-xl shadow-md border border-gray-200">
+    <div className="bg-white p-4 min-h-[calc(100vh-80px)] rounded-xl border border-gray-300">
       <h1 className="font-semibold">Tình trạng xe hiện tại</h1>
       <div className="mt-2 flex gap-6">
         <button
@@ -179,6 +179,15 @@ const MotorbikeIdentifications = () => {
           }}
         >
           Thêm xe
+        </button>
+        <button
+          className="px-4 py-2 bg-success rounded-md text-white"
+          onClick={() => {
+            toggleModal();
+            setModalType("import");
+          }}
+        >
+          Thêm từ file
         </button>
       </div>
       <div className="mt-2 flex gap-6">

@@ -251,7 +251,7 @@ const Dashboard = () => {
             Xem tất cả
           </Link>
         </div>
-        <div className="border border-gray-200 rounded-lg mt-4">
+        <div className="border border-gray-300 rounded-lg mt-4">
           <TableData columns={rentalColumns} data={rentals.slice(0, 5)} />
         </div>
       </div>
