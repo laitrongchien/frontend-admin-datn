@@ -9,6 +9,7 @@ import Dropdown from "./Dropdown";
 import { resetTourState } from "@/store/features/tourSlice";
 import { resetMotorbikeState } from "@/store/features/motorbikeSlice";
 import { resetMotorIdentificationState } from "@/store/features/motorIdentificationSlice";
+import { resetRepairState } from "@/store/features/repairSlice";
 
 const DropdownUser = () => {
   const dispatch = useAppDispatch();
@@ -21,6 +22,7 @@ const DropdownUser = () => {
     dispatch(resetTourState());
     dispatch(resetMotorbikeState());
     dispatch(resetMotorIdentificationState());
+    dispatch(resetRepairState());
   };
 
   return (

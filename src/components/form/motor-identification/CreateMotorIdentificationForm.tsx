@@ -18,13 +18,21 @@ const CreateMotorIdentificationForm = ({
     motorbike: string;
     model_year: number;
     km_driven: number;
-    prev_broken: number;
+    engine_failures: number;
+    frame_failures: number;
+    brake_failures: number;
+    tire_failures: number;
+    other_failures: number;
   }>({
     identification: "",
     motorbike: "",
     model_year: 0,
     km_driven: 0,
-    prev_broken: 0,
+    engine_failures: 0,
+    frame_failures: 0,
+    brake_failures: 0,
+    tire_failures: 0,
+    other_failures: 0,
   });
 
   const handleSubmit = async (e: any) => {
@@ -86,6 +94,7 @@ const CreateMotorIdentificationForm = ({
               type="number"
               className="form-input w-full"
               required
+              defaultValue={0}
               onChange={(e) =>
                 setFormData({
                   ...formData,
@@ -100,6 +109,7 @@ const CreateMotorIdentificationForm = ({
               type="number"
               className="form-input w-full"
               required
+              defaultValue={2024}
               onChange={(e) =>
                 setFormData({
                   ...formData,
@@ -109,15 +119,76 @@ const CreateMotorIdentificationForm = ({
             />
           </div>
           <div className="basis-[48%] mb-4">
-            <h1>Số lần hỏng hóc trước đó</h1>
+            <h1>Số lần hỏng động cơ</h1>
             <input
               type="number"
               className="form-input w-full"
               required
+              defaultValue={0}
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  prev_broken: parseInt(e.target.value),
+                  engine_failures: parseInt(e.target.value),
+                })
+              }
+            />
+          </div>
+          <div className="basis-[48%] mb-4">
+            <h1>Số lần hỏng khung máy</h1>
+            <input
+              type="number"
+              className="form-input w-full"
+              required
+              defaultValue={0}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  frame_failures: parseInt(e.target.value),
+                })
+              }
+            />
+          </div>
+          <div className="basis-[48%] mb-4">
+            <h1>Số lần hỏng phanh</h1>
+            <input
+              type="number"
+              className="form-input w-full"
+              required
+              defaultValue={0}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  brake_failures: parseInt(e.target.value),
+                })
+              }
+            />
+          </div>
+          <div className="basis-[48%] mb-4">
+            <h1>Số lần hỏng săm, lốp</h1>
+            <input
+              type="number"
+              className="form-input w-full"
+              required
+              defaultValue={0}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  tire_failures: parseInt(e.target.value),
+                })
+              }
+            />
+          </div>
+          <div className="basis-[48%] mb-4">
+            <h1>Hỏng bộ phận khác</h1>
+            <input
+              type="number"
+              className="form-input w-full"
+              required
+              defaultValue={0}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  other_failures: parseInt(e.target.value),
                 })
               }
             />

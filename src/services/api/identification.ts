@@ -19,6 +19,13 @@ const createMotorIdentification = async (createData: any) => {
   );
 };
 
+const importMotorIdentification = async (importData: any) => {
+  return await axios.post(
+    "/identification/import-motor-identification",
+    importData
+  );
+};
+
 const updateMotorIdentification = async (updateData: any) => {
   return await axios.put(
     "/identification/update-motor-identification",
@@ -39,6 +46,7 @@ const getAllAvailableMotor = async (motorbikeId: string) => {
 export const motorIdentificationService = {
   getAllMotorbikeIdentifications,
   createMotorIdentification,
+  importMotorIdentification,
   updateMotorIdentification,
   deleteMotorIdentification,
   getMotorByIdentification,

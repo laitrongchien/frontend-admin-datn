@@ -11,6 +11,7 @@ import Modal from "@/components/Modal";
 import CreateMotorIdentificationForm from "@/components/form/motor-identification/CreateMotorIdentificationForm";
 import UpdateMotorIdentificationForm from "@/components/form/motor-identification/UpdateMotorIdentificationForm";
 import ConfirmDeleteMotorIdentification from "@/components/form/motor-identification/ConfirmDeleteMotorIdentification";
+import ImportMotorIdentificationForm from "@/components/form/motor-identification/ImportMotorIdentificationForm";
 import { fetchMotorIdentifications } from "@/store/features/motorIdentificationSlice";
 
 const MotorbikeIdentifications = () => {
@@ -68,18 +69,18 @@ const MotorbikeIdentifications = () => {
       name: "Tên xe",
       selector: (row: any) => row?.motorbike.name,
     },
-    {
-      name: "Đời xe",
-      selector: (row: any) => row?.model_year,
-    },
-    {
-      name: "Số km đã đi",
-      selector: (row: any) => row?.km_driven,
-    },
-    {
-      name: "Số lần sửa trước",
-      selector: (row: any) => row?.prev_broken,
-    },
+    // {
+    //   name: "Đời xe",
+    //   selector: (row: any) => row?.model_year,
+    // },
+    // {
+    //   name: "Số km đã đi",
+    //   selector: (row: any) => row?.km_driven,
+    // },
+    // {
+    //   name: "Số lần sửa trước",
+    //   selector: (row: any) => row?.prev_broken,
+    // },
     {
       name: "Hiệu suất",
       cell: (row: any) => (
@@ -112,7 +113,17 @@ const MotorbikeIdentifications = () => {
         } font-semibold
       `}
         >
-          {row?.status === "normal" ? "Bình thường" : "Hỏng hóc"}
+          {row?.status === "normal"
+            ? "Bình thường"
+            : row?.status === "engine_failure"
+            ? "Hỏng động cơ"
+            : row?.status === "frame_failure"
+            ? "Hỏng khung máy"
+            : row?.status === "brake_failure"
+            ? "Hỏng phanh"
+            : row?.status === "tire_failure"
+            ? "Hỏng săm, lốp"
+            : "Hỏng bộ phận khác"}
         </h1>
       ),
     },
@@ -170,7 +181,7 @@ const MotorbikeIdentifications = () => {
   return (
     <div className="bg-white p-4 min-h-[calc(100vh-80px)] rounded-xl border border-gray-300">
       <h1 className="font-semibold">Tình trạng xe hiện tại</h1>
-      <div className="mt-2 flex gap-6">
+      <div className="mt-2 flex gap-2">
         <button
           className="px-4 py-2 bg-primary rounded-md text-white"
           onClick={() => {
@@ -220,7 +231,11 @@ const MotorbikeIdentifications = () => {
         >
           <option value="">Tình trạng</option>
           <option value="normal">Bình thường</option>
-          <option value="broken">Hỏng hóc</option>
+          <option value="engine_failure">Hỏng động cơ</option>
+          <option value="frame_failure">Hỏng khung máy</option>
+          <option value="brake_failure">Hỏng phanh</option>
+          <option value="tire_failure">Hỏng săm, lốp</option>
+          <option value="other_failure">Hỏng bộ phận khác</option>
         </select>
         <select
           className="form-input w-52"
@@ -243,11 +258,13 @@ const MotorbikeIdentifications = () => {
               toggleModal={toggleModal}
               motorIdentification={selectedMotorIdentification}
             />
-          ) : (
+          ) : modalType === "delete" ? (
             <ConfirmDeleteMotorIdentification
               toggleModal={toggleModal}
               motorIdentification={selectedMotorIdentification}
             />
+          ) : (
+            <ImportMotorIdentificationForm toggleModal={toggleModal} />
           )}
         </Modal>
       )}

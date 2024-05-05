@@ -17,16 +17,24 @@ const UpdateMotorIdentificationForm = ({
     identification: string;
     model_year: number;
     km_driven: number;
-    prev_broken: number;
     status: string;
     isUsed: boolean;
+    engine_failures: number;
+    frame_failures: number;
+    brake_failures: number;
+    tire_failures: number;
+    other_failures: number;
   }>({
     identification: motorIdentification.identification,
     model_year: motorIdentification.model_year,
     km_driven: motorIdentification.km_driven,
-    prev_broken: motorIdentification.prev_broken,
     status: motorIdentification.status,
     isUsed: motorIdentification.isUsed,
+    engine_failures: motorIdentification.engine_failures,
+    frame_failures: motorIdentification.frame_failures,
+    brake_failures: motorIdentification.brake_failures,
+    tire_failures: motorIdentification.tire_failures,
+    other_failures: motorIdentification.other_failures,
   });
 
   const handleSubmit = async (e: any) => {
@@ -90,37 +98,6 @@ const UpdateMotorIdentificationForm = ({
             />
           </div>
           <div className="basis-[48%] mb-4">
-            <h1>Số lần hỏng hóc trước đó</h1>
-            <input
-              type="number"
-              className="form-input w-full"
-              required
-              value={formData.prev_broken}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  prev_broken: parseInt(e.target.value),
-                })
-              }
-            />
-          </div>
-          <div className="basis-[48%] mb-4">
-            <h1>Tình trạng xe</h1>
-            <select
-              className="form-input w-full"
-              value={formData.status}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  status: e.target.value,
-                })
-              }
-            >
-              <option value="normal">Bình thường</option>
-              <option value="broken">Hỏng hóc</option>
-            </select>
-          </div>
-          <div className="basis-[48%] mb-4">
             <h1>Trạng thái thuê</h1>
             <select
               className="form-input w-full"
@@ -135,6 +112,101 @@ const UpdateMotorIdentificationForm = ({
               <option value="idle">Xe đang rỗi</option>
               <option value="rented">Đã được thuê/ đặt cọc</option>
             </select>
+          </div>
+          <div className="basis-[48%] mb-4">
+            <h1>Tình trạng xe</h1>
+            <select
+              className="form-input w-full"
+              value={formData.status}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  status: e.target.value,
+                })
+              }
+            >
+              <option value="normal">Bình thường</option>
+              <option value="engine_failure">Hỏng động cơ</option>
+              <option value="frame_failure">Hỏng khung máy</option>
+              <option value="brake_failure">Hỏng phanh</option>
+              <option value="tire_failure">Hỏng săm, lốp</option>
+              <option value="other_failure">Hỏng bộ phận khác</option>
+            </select>
+          </div>
+          <div className="basis-[48%] mb-4">
+            <h1>Số lần hỏng động cơ</h1>
+            <input
+              type="number"
+              className="form-input w-full"
+              required
+              value={formData.engine_failures}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  engine_failures: parseInt(e.target.value),
+                })
+              }
+            />
+          </div>
+          <div className="basis-[48%] mb-4">
+            <h1>Số lần hỏng khung máy</h1>
+            <input
+              type="number"
+              className="form-input w-full"
+              required
+              value={formData.frame_failures}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  frame_failures: parseInt(e.target.value),
+                })
+              }
+            />
+          </div>
+          <div className="basis-[48%] mb-4">
+            <h1>Số lần hỏng phanh</h1>
+            <input
+              type="number"
+              className="form-input w-full"
+              required
+              value={formData.brake_failures}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  brake_failures: parseInt(e.target.value),
+                })
+              }
+            />
+          </div>
+          <div className="basis-[48%] mb-4">
+            <h1>Số lần hỏng săm, lốp</h1>
+            <input
+              type="number"
+              className="form-input w-full"
+              required
+              value={formData.tire_failures}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  tire_failures: parseInt(e.target.value),
+                })
+              }
+            />
+          </div>
+          <div className="basis-[48%] mb-4">
+            <h1>Số lần hỏng vị trí khác</h1>
+            <input
+              type="number"
+              className="form-input w-full"
+              required
+              value={formData.other_failures}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  other_failures: parseInt(e.target.value),
+                })
+              }
+            />
           </div>
         </div>
 

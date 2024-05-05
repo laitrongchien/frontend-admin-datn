@@ -28,6 +28,20 @@ export const createMotorIdentification = createAsyncThunk(
   }
 );
 
+export const importMotorIdentification = createAsyncThunk(
+  "motorIdentification/import",
+  async (data: any, { rejectWithValue }) => {
+    try {
+      const res = await motorIdentificationService.importMotorIdentification(
+        data
+      );
+      return res.data;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 export const updateMotorIdentification = createAsyncThunk(
   "motorIdentification/update",
   async (data: any, { rejectWithValue }) => {
@@ -122,6 +136,18 @@ const motorIdentificationSlice = createSlice({
         );
       })
       .addCase(deleteMotorIdentification.rejected, (state, action) => {
+        state.error = action.payload as any;
+      })
+      .addCase(importMotorIdentification.pending, (state) => {
+        state.error = undefined;
+      })
+      .addCase(importMotorIdentification.fulfilled, (state, action) => {
+        state.motorIdentifications = [
+          ...action.payload,
+          ...state.motorIdentifications,
+        ];
+      })
+      .addCase(importMotorIdentification.rejected, (state, action) => {
         state.error = action.payload as any;
       });
   },

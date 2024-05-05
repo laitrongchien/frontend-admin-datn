@@ -183,8 +183,8 @@ const MotorRentalDetail = ({ params }: { params: { id: string } }) => {
                 : "Thanh toán trước 20%"}
             </span>
           </h1>
-          <h1 className="mt-4">
-            Trạng thái đơn thuê:{" "}
+          <div className="mt-4">
+            <span>Trạng thái đơn thuê:</span>
             {motorRentalDetail?.status !== "returned" ? (
               <select
                 className="form-input w-60 ml-6"
@@ -199,7 +199,10 @@ const MotorRentalDetail = ({ params }: { params: { id: string } }) => {
             ) : (
               <span className="text-success font-semibold">Đã trả xe</span>
             )}
-          </h1>
+          </div>
+          {/* <div className="mt-4">
+            <span>Phí đền bù (nghìn đồng):</span>
+          </div> */}
         </div>
         <div>
           <p className="text-right">
