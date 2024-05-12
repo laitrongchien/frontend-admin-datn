@@ -1,5 +1,6 @@
 "use client";
 
+import { colors } from "@/constants";
 import { TailSpin } from "react-loader-spinner";
 
 const Loading = () => {
@@ -8,7 +9,7 @@ const Loading = () => {
       <TailSpin
         height="50"
         width="50"
-        color="#03c9d7"
+        color={colors.blue}
         ariaLabel="tail-spin-loading"
         radius="1"
         wrapperStyle={{}}

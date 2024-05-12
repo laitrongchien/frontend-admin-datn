@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import TableData from "@/components/table/TableData";
 import Loading from "@/components/Loading";
 import { FaRegEye } from "react-icons/fa";
+import { colors } from "@/constants";
 
 const MotorRental = () => {
   const router = useRouter();
@@ -97,7 +98,7 @@ const MotorRental = () => {
       center: true,
       cell: (row: any) => (
         <FaRegEye
-          color="#03c9d7"
+          color={colors.blue}
           size={20}
           className="cursor-pointer"
           onClick={() => router.push(`/bills/motor-rental/${row._id}`)}

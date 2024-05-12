@@ -6,6 +6,7 @@ import { bookingService } from "@/services/api/booking";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaRegEye } from "react-icons/fa";
+import { colors } from "@/constants";
 
 const TourBooking = () => {
   const router = useRouter();
@@ -99,7 +100,7 @@ const TourBooking = () => {
       center: true,
       cell: (row: any) => (
         <FaRegEye
-          color="#03c9d7"
+          color={colors.blue}
           size={20}
           className="cursor-pointer"
           onClick={() => router.push(`/bills/tour-booking/${row._id}`)}

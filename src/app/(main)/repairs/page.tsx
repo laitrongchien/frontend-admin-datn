@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { fetchRepairs } from "@/store/features/repairSlice";
 import { formatTime, formatCurrency } from "@/utils/common";
 import { FaEdit } from "react-icons/fa";
+import { colors } from "@/constants";
 
 const Repairs = () => {
   const dispatch = useAppDispatch();
@@ -73,7 +74,7 @@ const Repairs = () => {
       center: true,
       cell: (row: any) => (
         <FaEdit
-          color="#1abf57"
+          color={colors.green}
           size={18}
           className="cursor-pointer"
           onClick={() => {

@@ -164,7 +164,8 @@ const MotorRentalDetail = ({ params }: { params: { id: string } }) => {
         <div className="ml-24">
           <h1 className="font-semibold">Thông tin khách hàng</h1>
           <p>Tên: {motorRentalDetail?.user.name}</p>
-          <p>Tên: {motorRentalDetail?.user.email}</p>
+          <p>Email: {motorRentalDetail?.user.email}</p>
+          <p>Số điện thoại liên hệ: {motorRentalDetail?.phone}</p>
         </div>
       </div>
       <div className="mt-8 flex justify-between">

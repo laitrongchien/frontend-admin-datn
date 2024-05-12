@@ -14,6 +14,7 @@ import CreateMotorbikeForm from "@/components/form/motorbike/CreateMotorbikeForm
 import { FaEdit, FaTrashAlt, FaRegEye } from "react-icons/fa";
 import UpdateMotorbikeForm from "@/components/form/motorbike/UpdateMotorbikeForm";
 import ConfirmDeleteMotorbike from "@/components/form/motorbike/ConfirmDeleteMotorbike";
+import { colors } from "@/constants";
 
 const Motorbikes = () => {
   const dispatch = useAppDispatch();
@@ -76,7 +77,7 @@ const Motorbikes = () => {
       cell: (row: any) => (
         <div className="flex items-center">
           <span>{row?.ratingsAverage}</span>
-          <MdStar color="#03c9d7" />
+          <MdStar color={colors.blue} />
           <span>({row?.ratingsQuantity})</span>
         </div>
       ),
@@ -101,13 +102,13 @@ const Motorbikes = () => {
       cell: (row: any) => (
         <div className="flex items-center gap-2">
           <FaRegEye
-            color="#03c9d7"
+            color={colors.blue}
             size={20}
             className="cursor-pointer"
             onClick={() => router.push(`/motorbikes/${row._id}`)}
           />
           <FaEdit
-            color="#1abf57"
+            color={colors.green}
             size={18}
             className="cursor-pointer"
             onClick={() => {
@@ -117,7 +118,7 @@ const Motorbikes = () => {
             }}
           />
           <FaTrashAlt
-            color="#dc2626"
+            color={colors.red}
             size={16}
             className="cursor-pointer"
             onClick={() => {

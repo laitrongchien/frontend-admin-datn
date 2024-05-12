@@ -13,6 +13,7 @@ import UpdateMotorIdentificationForm from "@/components/form/motor-identificatio
 import ConfirmDeleteMotorIdentification from "@/components/form/motor-identification/ConfirmDeleteMotorIdentification";
 import ImportMotorIdentificationForm from "@/components/form/motor-identification/ImportMotorIdentificationForm";
 import { fetchMotorIdentifications } from "@/store/features/motorIdentificationSlice";
+import { colors } from "@/constants";
 
 const MotorbikeIdentifications = () => {
   const router = useRouter();
@@ -130,7 +131,7 @@ const MotorbikeIdentifications = () => {
     {
       name: "Đang được thuê",
       cell: (row: any) =>
-        row?.isUsed && <FaSquareCheck color="#1abf57" size={22} />,
+        row?.isUsed && <FaSquareCheck color={colors.green} size={22} />,
       center: true,
     },
     {
@@ -139,7 +140,7 @@ const MotorbikeIdentifications = () => {
       cell: (row: any) => (
         <div className="flex items-center gap-2">
           <FaRegEye
-            color="#03c9d7"
+            color={colors.blue}
             size={20}
             className="cursor-pointer"
             onClick={() =>
@@ -147,7 +148,7 @@ const MotorbikeIdentifications = () => {
             }
           />
           <FaEdit
-            color="#1abf57"
+            color={colors.green}
             size={18}
             className="cursor-pointer"
             onClick={() => {
@@ -157,7 +158,7 @@ const MotorbikeIdentifications = () => {
             }}
           />
           <FaTrashAlt
-            color="#dc2626"
+            color={colors.red}
             size={16}
             className="cursor-pointer"
             onClick={() => {

@@ -13,6 +13,7 @@ import { bookingService } from "@/services/api/booking";
 import { rentalService } from "@/services/api/rental";
 import TableData from "@/components/table/TableData";
 import Loading from "@/components/Loading";
+import { colors } from "@/constants";
 
 const Dashboard = () => {
   const [tours, setTours] = useState([]);
@@ -189,7 +190,7 @@ const Dashboard = () => {
                 <h1 className="mt-4 font-semibold text-xl">{tours.length}</h1>
               </div>
               <div className="w-10 h-10 rounded-full bg-[#e5fafb] flex-center">
-                <FaFlagCheckered color="#03c9d7" />
+                <FaFlagCheckered color={colors.blue} />
               </div>
             </div>
           </div>
@@ -204,7 +205,7 @@ const Dashboard = () => {
                 </h1>
               </div>
               <div className="w-10 h-10 rounded-full bg-[#e5fafb] flex-center">
-                <FaMotorcycle color="#03c9d7" size={20} />
+                <FaMotorcycle color={colors.blue} size={20} />
               </div>
             </div>
           </div>
@@ -219,7 +220,7 @@ const Dashboard = () => {
                 </h1>
               </div>
               <div className="w-10 h-10 rounded-full bg-[#e5faf2] flex-center">
-                <MdReceiptLong color="#1abf57" />
+                <MdReceiptLong color={colors.green} />
               </div>
             </div>
           </div>
@@ -232,7 +233,7 @@ const Dashboard = () => {
                 <h1 className="mt-4 font-semibold text-xl">{rentals.length}</h1>
               </div>
               <div className="w-10 h-10 rounded-full bg-[#e5faf2] flex-center">
-                <RiBillLine color="#1abf57" />
+                <RiBillLine color={colors.green} />
               </div>
             </div>
           </div>
