@@ -113,7 +113,7 @@ const CreateMotorIdentificationForm = ({
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  model_year: parseFloat(e.target.value),
+                  model_year: parseInt(e.target.value),
                 })
               }
             />

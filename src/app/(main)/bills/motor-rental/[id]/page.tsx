@@ -215,17 +215,20 @@ const MotorRentalDetail = ({ params }: { params: { id: string } }) => {
           <p className="text-right">
             Đã thanh toán qua VNPay:{" "}
             <span className="font-semibold min-w-[85px] inline-block">
-              {formatCurrency(motorRentalDetail?.totalPrice * 0.2)}
+              {motorRentalDetail?.paymentType === "payAll"
+                ? formatCurrency(motorRentalDetail?.totalPrice)
+                : formatCurrency(motorRentalDetail?.totalPrice * 0.2)}
             </span>
           </p>
-          {rentalStatus === "received" && (
-            <p className="text-right">
-              Đã thanh toán tại điểm nhận xe:{" "}
-              <span className="font-semibold min-w-[85px] inline-block">
-                {formatCurrency(motorRentalDetail?.totalPrice * 0.8)}
-              </span>
-            </p>
-          )}
+          {rentalStatus === "received" &&
+            motorRentalDetail?.paymentType === "payPart" && (
+              <p className="text-right">
+                Đã thanh toán tại điểm nhận xe:{" "}
+                <span className="font-semibold min-w-[85px] inline-block">
+                  {formatCurrency(motorRentalDetail?.totalPrice * 0.8)}
+                </span>
+              </p>
+            )}
         </div>
       </div>
 

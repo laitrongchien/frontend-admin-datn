@@ -108,12 +108,29 @@ const TourBookingDetail = ({ params }: { params: { id: string } }) => {
           </span>
         </h1>
         <div>
-          <p>
+          <p className="text-right">
             Tổng tiền phải trả:{" "}
-            <span className="font-semibold">
+            <span className="font-semibold min-w-[85px] inline-block">
               {formatCurrency(bookingTour?.totalPrice)}
             </span>
           </p>
+          <p className="text-right">
+            Đã thanh toán qua VNPay:{" "}
+            <span className="font-semibold min-w-[85px] inline-block">
+              {bookingTour?.paymentType === "payAll"
+                ? formatCurrency(bookingTour?.totalPrice)
+                : formatCurrency(bookingTour?.totalPrice * 0.2)}
+            </span>
+          </p>
+          {bookingStatus === "started" &&
+            bookingTour?.paymentType === "payPart" && (
+              <p className="text-right">
+                Đã thanh toán tại điểm đến:{" "}
+                <span className="font-semibold min-w-[85px] inline-block">
+                  {formatCurrency(bookingTour?.totalPrice * 0.8)}
+                </span>
+              </p>
+            )}
         </div>
       </div>
       <h1 className="mt-4">
