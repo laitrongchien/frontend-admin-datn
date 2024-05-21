@@ -3,9 +3,10 @@ import { useEffect, useRef, useState } from "react";
 interface DropdownProps {
   trigger: React.ReactNode;
   children: React.ReactNode;
+  fetchApi?: () => void;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ trigger, children }) => {
+const Dropdown: React.FC<DropdownProps> = ({ trigger, children, fetchApi }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const triggerRef = useRef<any>(null);
@@ -39,7 +40,10 @@ const Dropdown: React.FC<DropdownProps> = ({ trigger, children }) => {
     <div className="relative">
       <div
         ref={triggerRef}
-        onClick={() => setDropdownOpen(!dropdownOpen)}
+        onClick={() => {
+          setDropdownOpen(!dropdownOpen);
+          if (fetchApi && !dropdownOpen) fetchApi();
+        }}
         className="cursor-pointer"
       >
         {trigger}

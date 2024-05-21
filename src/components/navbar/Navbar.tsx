@@ -6,6 +6,7 @@ import Image from "next/image";
 import { LayoutContext } from "../layout/context/LayoutContext";
 import { useContext } from "react";
 import DropdownUser from "../dropdown/DropdownUser";
+import DropdownNotification from "../dropdown/DropdownNotification";
 
 const Navbar = () => {
   const { onMenuToggle } = useContext(LayoutContext);
@@ -21,7 +22,8 @@ const Navbar = () => {
           className="h-[60px] object-cover w-[120px]"
         />
       </Link>
-      <div>
+      <div className="flex items-center gap-4">
+        <DropdownNotification />
         <DropdownUser />
       </div>
     </header>

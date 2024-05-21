@@ -1,5 +1,5 @@
 import { FaFlagCheckered, FaMotorcycle } from "react-icons/fa";
-import { LuHome, LuWrench } from "react-icons/lu";
+import { LuHome, LuWrench, LuBell } from "react-icons/lu";
 import { MdOutlineSync, MdReceiptLong } from "react-icons/md";
 
 export const sidebar_items = [
@@ -37,5 +37,10 @@ export const sidebar_items = [
     title: "Bảo dưỡng, sửa chữa xe",
     path: "/repairs",
     icon: <LuWrench size={20} />,
+  },
+  {
+    title: "Tất cả thông báo",
+    path: "/notifications",
+    icon: <LuBell size={20} />,
   },
 ];

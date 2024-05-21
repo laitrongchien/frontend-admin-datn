@@ -31,8 +31,9 @@ const Login = () => {
   }, [user, router]);
 
   return (
-    <div className="flex-center h-screen p-6">
-      <div className="bg-white md:w-[500px] p-10 rounded-lg border border-gray-300">
+    <div className="relative flex-center h-screen p-6 bg-[url('https://res.cloudinary.com/dufuwsrue/image/upload/v1715966233/rwd_img_wide_001_xigkl2.jpg')] bg-no-repeat bg-cover bg-center">
+      <div className="absolute inset-0 bg-black opacity-20"></div>
+      <div className="bg-white md:w-[500px] p-10 rounded-lg shadow z-10">
         <h1 className="text-2xl font-semibold text-center text-gray-900 mb-4">
           Đăng nhập
         </h1>

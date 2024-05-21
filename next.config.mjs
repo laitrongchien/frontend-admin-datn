@@ -6,6 +6,7 @@ const nextConfig = {
       "motorbiketourexpert.com",
       "rentabikevn.com",
       "cdn.riderly.com",
+      "lh3.googleusercontent.com",
     ],
   },
 };
