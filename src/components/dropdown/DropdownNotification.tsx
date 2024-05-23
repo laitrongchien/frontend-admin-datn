@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
 import { LuBell } from "react-icons/lu";
 import Dropdown from "./Dropdown";
 import { notificationService } from "@/services/api/notification";

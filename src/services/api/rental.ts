@@ -25,9 +25,14 @@ const updateIdentificationsRental = async (
   });
 };
 
+const updateRentalExtraFee = async (id: string, data: any) => {
+  return await axios.put(`rental/update-rental-extra-fee/${id}`, data);
+};
+
 export const rentalService = {
   getAllMotorbikeRentals,
   getMotorbikeRentalById,
   updateRentalStatus,
+  updateRentalExtraFee,
   updateIdentificationsRental,
 };

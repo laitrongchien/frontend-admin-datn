@@ -27,6 +27,10 @@ body {
   }
 } */
 
+.pdf-export {
+  font-size: 32px;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }
