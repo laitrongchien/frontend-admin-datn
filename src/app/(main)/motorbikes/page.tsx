@@ -56,6 +56,7 @@ const Motorbikes = () => {
           className="w-24 h-16 object-cover rounded-md"
         />
       ),
+      width: "160px",
     },
     {
       name: "Giá thuê",
@@ -68,7 +69,7 @@ const Motorbikes = () => {
           /ngày
         </h1>
       ),
-      width: "200px",
+      width: "160px",
       sortable: true,
     },
     {
@@ -81,7 +82,7 @@ const Motorbikes = () => {
           <span>({row?.ratingsQuantity})</span>
         </div>
       ),
-      width: "160px",
+      width: "120px",
       sortable: true,
     },
     {
@@ -95,6 +96,11 @@ const Motorbikes = () => {
             : "Xe số"}
         </h1>
       ),
+    },
+    {
+      name: "Số lượng xe",
+      selector: (row: any) => row?.numOfMotorIdentifications,
+      sortable: true,
     },
     {
       name: "Hành động",
@@ -163,7 +169,7 @@ const Motorbikes = () => {
           <option value="manual">Xe tay côn</option>
         </select>
       </div>
-      <div className="border border-gray-200 rounded-lg mt-4">
+      <div className="border border-gray-300 rounded-lg mt-4">
         <TableData columns={columns} data={filteredMotorbikes} />
       </div>
       {showModal && (

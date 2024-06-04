@@ -63,7 +63,6 @@ const Login = () => {
                 type={passwordShown ? "text" : "password"}
                 id="password"
                 name="password"
-                placeholder="••••••••"
                 className="form-input w-full"
                 onChange={(e) =>
                   setFormData({ ...formData, password: e.target.value })

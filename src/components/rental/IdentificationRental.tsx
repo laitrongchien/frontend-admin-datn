@@ -42,13 +42,14 @@ const IdentificationRental = ({
     if (motorRentalDetail?.motorbikes[0].motorbike._id) {
       const fetchAllAvailableMotor = async () => {
         const res = await motorIdentificationService.getAllAvailableMotor(
-          motorRentalDetail?.motorbikes[0].motorbike._id
+          motorRentalDetail?.motorbikes[0].motorbike._id,
+          motorRentalDetail?.location
         );
         setAvailableMotors(res.data);
       };
       fetchAllAvailableMotor();
     }
-  }, [motorRentalDetail?.motorbikes]);
+  }, [motorRentalDetail?.location, motorRentalDetail?.motorbikes]);
 
   const handleUpdateIdentificationsRental = async () => {
     try {

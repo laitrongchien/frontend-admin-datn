@@ -4,6 +4,7 @@ import motorbikeReducer from "./features/motorbikeSlice";
 import tourReducer from "./features/tourSlice";
 import motorIdentificationReducer from "./features/motorIdentificationSlice";
 import repairReducer from "./features/repairSlice";
+import locationReducer from "./features/locationSlice";
 import { persistReducer, persistStore } from "redux-persist";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 
@@ -39,6 +40,7 @@ export const store = configureStore({
     tour: tourReducer,
     motorIdentification: motorIdentificationReducer,
     repair: repairReducer,
+    location: locationReducer,
   },
   devTools: true,
   middleware: (getDefaultMiddleware) =>

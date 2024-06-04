@@ -41,7 +41,7 @@ const Repairs = () => {
     {
       name: "Loại",
       cell: (row: any) => (
-        <h1>{row?.type === "repair" ? "Sửa chữa" : "Bảo hành"}</h1>
+        <h1>{row?.type === "repair" ? "Sửa chữa" : "Bảo dưỡng"}</h1>
       ),
     },
     {
@@ -106,7 +106,7 @@ const Repairs = () => {
       >
         Thêm
       </button>
-      <div className="border border-gray-200 rounded-lg mt-4">
+      <div className="border border-gray-300 rounded-lg mt-4">
         <TableData columns={columns} data={repairs} />
       </div>
       {showModal && (

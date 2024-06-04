@@ -5,6 +5,7 @@ import { useAppDispatch } from "@/store/hooks";
 import { toast } from "react-toastify";
 import { motorbikeService } from "@/services/api/motorbike";
 import { createMotorIdentification } from "@/store/features/motorIdentificationSlice";
+import { locationService } from "@/services/api/location";
 
 const CreateMotorIdentificationForm = ({
   toggleModal,
@@ -13,26 +14,29 @@ const CreateMotorIdentificationForm = ({
 }) => {
   const dispatch = useAppDispatch();
   const [motorbikes, setMotorbikes] = useState([]);
+  const [locations, setLocations] = useState([]);
   const [formData, setFormData] = useState<{
     identification: string;
     motorbike: string;
+    location: string;
     model_year: number;
     km_driven: number;
-    engine_failures: number;
-    frame_failures: number;
-    brake_failures: number;
-    tire_failures: number;
-    other_failures: number;
+    very_serious_failures: number;
+    serious_failures: number;
+    quite_serious_failures: number;
+    medium_failures: number;
+    minor_failures: number;
   }>({
     identification: "",
     motorbike: "",
+    location: "",
     model_year: 0,
     km_driven: 0,
-    engine_failures: 0,
-    frame_failures: 0,
-    brake_failures: 0,
-    tire_failures: 0,
-    other_failures: 0,
+    very_serious_failures: 0,
+    serious_failures: 0,
+    quite_serious_failures: 0,
+    medium_failures: 0,
+    minor_failures: 0,
   });
 
   const handleSubmit = async (e: any) => {
@@ -52,6 +56,14 @@ const CreateMotorIdentificationForm = ({
       setMotorbikes(res.data.motorbikes);
     };
     getAllMotorbikes();
+  }, []);
+
+  useEffect(() => {
+    const getAllLocations = async () => {
+      const res = await locationService.getAllLocations();
+      setLocations(res.data);
+    };
+    getAllLocations();
   }, []);
 
   return (
@@ -89,6 +101,23 @@ const CreateMotorIdentificationForm = ({
             </select>
           </div>
           <div className="basis-[48%] mb-4">
+            <h1>Địa điểm nhận xe</h1>
+            <select
+              className="form-input w-full"
+              required
+              onChange={(e) =>
+                setFormData({ ...formData, location: e.target.value })
+              }
+            >
+              <option>Chọn địa điểm nhận xe</option>
+              {locations.map((location: any) => (
+                <option key={location._id} value={location.address}>
+                  {location.address}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="basis-[48%] mb-4">
             <h1>Số km đã đi (km)</h1>
             <input
               type="number"
@@ -119,7 +148,7 @@ const CreateMotorIdentificationForm = ({
             />
           </div>
           <div className="basis-[48%] mb-4">
-            <h1>Số lần hỏng động cơ</h1>
+            <h1>Thống kê hỏng hóc rất nghiêm trọng (lần)</h1>
             <input
               type="number"
               className="form-input w-full"
@@ -128,13 +157,13 @@ const CreateMotorIdentificationForm = ({
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  engine_failures: parseInt(e.target.value),
+                  very_serious_failures: parseInt(e.target.value),
                 })
               }
             />
           </div>
           <div className="basis-[48%] mb-4">
-            <h1>Số lần hỏng khung máy</h1>
+            <h1>Thống kê hỏng hóc nghiêm trọng (lần)</h1>
             <input
               type="number"
               className="form-input w-full"
@@ -143,13 +172,13 @@ const CreateMotorIdentificationForm = ({
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  frame_failures: parseInt(e.target.value),
+                  serious_failures: parseInt(e.target.value),
                 })
               }
             />
           </div>
           <div className="basis-[48%] mb-4">
-            <h1>Số lần hỏng phanh</h1>
+            <h1>Thống kê hỏng hóc khá nghiêm trọng (lần)</h1>
             <input
               type="number"
               className="form-input w-full"
@@ -158,13 +187,13 @@ const CreateMotorIdentificationForm = ({
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  brake_failures: parseInt(e.target.value),
+                  quite_serious_failures: parseInt(e.target.value),
                 })
               }
             />
           </div>
           <div className="basis-[48%] mb-4">
-            <h1>Số lần hỏng săm, lốp</h1>
+            <h1>Thống kê hỏng hóc trung bình (lần)</h1>
             <input
               type="number"
               className="form-input w-full"
@@ -173,13 +202,13 @@ const CreateMotorIdentificationForm = ({
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  tire_failures: parseInt(e.target.value),
+                  medium_failures: parseInt(e.target.value),
                 })
               }
             />
           </div>
           <div className="basis-[48%] mb-4">
-            <h1>Hỏng bộ phận khác</h1>
+            <h1>Thống kê hỏng hóc nhẹ (lần)</h1>
             <input
               type="number"
               className="form-input w-full"
@@ -188,7 +217,7 @@ const CreateMotorIdentificationForm = ({
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  other_failures: parseInt(e.target.value),
+                  minor_failures: parseInt(e.target.value),
                 })
               }
             />

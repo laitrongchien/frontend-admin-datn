@@ -37,9 +37,9 @@ const deleteMotorIdentification = async (id: string) => {
   return await axios.delete(`identification/delete-motor-identification/${id}`);
 };
 
-const getAllAvailableMotor = async (motorbikeId: string) => {
+const getAllAvailableMotor = async (motorbikeId: string, location: string) => {
   return await axios.get(
-    `/identification/get-all-available-motor/${motorbikeId}`
+    `/identification/get-all-available-motor/${motorbikeId}?location=${location}`
   );
 };
 

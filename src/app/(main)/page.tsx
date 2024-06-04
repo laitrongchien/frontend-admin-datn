@@ -239,12 +239,6 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      {/* <div className="p-2">
-        <h1 className="text-lg">Đơn đặt tour gần đây</h1>
-        <div className="border border-gray-200 rounded-lg mt-4">
-          <TableData columns={bookingColumns} data={bookings} />
-        </div>
-      </div> */}
       <div className="p-2 mt-4">
         <div className="flex-between">
           <h1 className="text-lg">Đơn thuê xe gần đây</h1>

@@ -17,8 +17,9 @@ const SideBarMenuItem = ({ item }: { item: any }) => {
       {item.subMenu ? (
         <div className="min-w-[18px] mb-2">
           <button
-            className={`w-full flex items-center min-h-[40px] text-black py-2 px-4 hover:bg-hoverItem hover:text-primary rounded-md transition duration-200 ${
-              pathname.includes(item.path) && "text-white bg-primary"
+            className={`w-full flex items-center min-h-[40px] text-black py-2 px-4 hover:bg-hoverItem hover:text-primary hover:border-r-2 border-primary transition duration-200 ${
+              pathname.includes(item.path) &&
+              "text-primary bg-hoverItem border-r-2 border-primary"
             }`}
             onClick={toggleSubMenu}
           >
@@ -54,10 +55,10 @@ const SideBarMenuItem = ({ item }: { item: any }) => {
       ) : (
         <Link
           href={item.path}
-          className={`flex items-center min-h-[40px] text-black py-2 px-4 mb-2 hover:text-primary hover:bg-hoverItem rounded-md transition duration-200 ${
+          className={`flex items-center min-h-[40px] text-black py-2 px-4 mb-2 hover:text-primary hover:bg-hoverItem hover:border-r-2 border-primary transition duration-200 ${
             (item.path === "/" && pathname === item.path) ||
             (item.path !== "/" && pathname.startsWith(item.path))
-              ? "text-white bg-primary"
+              ? "text-primary bg-hoverItem border-r-2 border-primary"
               : ""
           }`}
         >

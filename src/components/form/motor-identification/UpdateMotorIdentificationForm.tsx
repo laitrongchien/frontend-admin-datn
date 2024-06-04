@@ -19,22 +19,22 @@ const UpdateMotorIdentificationForm = ({
     km_driven: number;
     status: string;
     isUsed: boolean;
-    engine_failures: number;
-    frame_failures: number;
-    brake_failures: number;
-    tire_failures: number;
-    other_failures: number;
+    very_serious_failures: number;
+    serious_failures: number;
+    quite_serious_failures: number;
+    medium_failures: number;
+    minor_failures: number;
   }>({
     identification: motorIdentification.identification,
     model_year: motorIdentification.model_year,
     km_driven: motorIdentification.km_driven,
     status: motorIdentification.status,
     isUsed: motorIdentification.isUsed,
-    engine_failures: motorIdentification.engine_failures,
-    frame_failures: motorIdentification.frame_failures,
-    brake_failures: motorIdentification.brake_failures,
-    tire_failures: motorIdentification.tire_failures,
-    other_failures: motorIdentification.other_failures,
+    very_serious_failures: motorIdentification.very_serious_failures,
+    serious_failures: motorIdentification.serious_failures,
+    quite_serious_failures: motorIdentification.quite_serious_failures,
+    medium_failures: motorIdentification.medium_failures,
+    minor_failures: motorIdentification.minor_failures,
   });
 
   const handleSubmit = async (e: any) => {
@@ -134,76 +134,76 @@ const UpdateMotorIdentificationForm = ({
             </select>
           </div>
           <div className="basis-[48%] mb-4">
-            <h1>Số lần hỏng động cơ</h1>
+            <h1>Thống kê hỏng hóc rất nghiêm trọng</h1>
             <input
               type="number"
               className="form-input w-full"
               required
-              value={formData.engine_failures}
+              value={formData.very_serious_failures}
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  engine_failures: parseInt(e.target.value),
+                  very_serious_failures: parseInt(e.target.value),
                 })
               }
             />
           </div>
           <div className="basis-[48%] mb-4">
-            <h1>Số lần hỏng khung máy</h1>
+            <h1>Thống kê hỏng hóc nghiêm trọng</h1>
             <input
               type="number"
               className="form-input w-full"
               required
-              value={formData.frame_failures}
+              value={formData.serious_failures}
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  frame_failures: parseInt(e.target.value),
+                  serious_failures: parseInt(e.target.value),
                 })
               }
             />
           </div>
           <div className="basis-[48%] mb-4">
-            <h1>Số lần hỏng phanh</h1>
+            <h1>Thống kê hỏng hóc khá nghiêm trọng</h1>
             <input
               type="number"
               className="form-input w-full"
               required
-              value={formData.brake_failures}
+              value={formData.quite_serious_failures}
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  brake_failures: parseInt(e.target.value),
+                  quite_serious_failures: parseInt(e.target.value),
                 })
               }
             />
           </div>
           <div className="basis-[48%] mb-4">
-            <h1>Số lần hỏng săm, lốp</h1>
+            <h1>Thống kê hỏng hóc trung bình</h1>
             <input
               type="number"
               className="form-input w-full"
               required
-              value={formData.tire_failures}
+              value={formData.medium_failures}
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  tire_failures: parseInt(e.target.value),
+                  medium_failures: parseInt(e.target.value),
                 })
               }
             />
           </div>
           <div className="basis-[48%] mb-4">
-            <h1>Số lần hỏng vị trí khác</h1>
+            <h1>Thống kê hỏng hóc nhẹ</h1>
             <input
               type="number"
               className="form-input w-full"
               required
-              value={formData.other_failures}
+              value={formData.minor_failures}
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  other_failures: parseInt(e.target.value),
+                  minor_failures: parseInt(e.target.value),
                 })
               }
             />

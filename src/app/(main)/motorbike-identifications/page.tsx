@@ -203,13 +203,6 @@ const MotorbikeIdentifications = () => {
         </button>
       </div>
       <div className="mt-2 flex gap-6">
-        {/* <input
-          type="text"
-          className="form-input w-48"
-          placeholder="Tìm kiếm theo biển số"
-          value={searchIdentification}
-          onChange={(e) => setSearchIdentification(e.target.value)}
-        /> */}
         <input
           type="text"
           className="form-input w-48"
@@ -247,7 +240,7 @@ const MotorbikeIdentifications = () => {
           <option value="rented">Đã được thuê/ đặt cọc</option>
         </select>
       </div>
-      <div className="border border-gray-200 rounded-lg mt-4">
+      <div className="border border-gray-300 rounded-lg mt-4">
         <TableData columns={columns} data={filteredMotorbikeIdentifications} />
       </div>
       {showModal && (

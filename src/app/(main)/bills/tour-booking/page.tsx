@@ -145,7 +145,7 @@ const TourBooking = () => {
           <option value="completed">Đã hoàn thành</option>
         </select>
       </div>
-      <div className="border border-gray-200 rounded-lg mt-4">
+      <div className="border border-gray-300 rounded-lg mt-4">
         <TableData columns={columns} data={filteredTourBookings} />
       </div>
     </div>

@@ -138,7 +138,7 @@ const Tours = () => {
       >
         Thêm
       </button>
-      <div className="border border-gray-200 rounded-lg mt-4">
+      <div className="border border-gray-300 rounded-lg mt-4">
         <TableData columns={columns} data={tours} />
       </div>
       {showModal && (

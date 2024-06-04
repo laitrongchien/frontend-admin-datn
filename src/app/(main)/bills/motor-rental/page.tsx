@@ -144,7 +144,7 @@ const MotorRental = () => {
           <option value="returned">Đã trả xe</option>
         </select>
       </div>
-      <div className="border border-gray-200 rounded-lg mt-4">
+      <div className="border border-gray-300 rounded-lg mt-4">
         <TableData columns={columns} data={filteredMotorbikeRentals} />
       </div>
     </div>
