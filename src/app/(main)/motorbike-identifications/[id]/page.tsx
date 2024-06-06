@@ -71,19 +71,23 @@ const IdentificationDetail = ({ params }: { params: { id: string } }) => {
           Đời xe: {motorIdentificationDetail?.model_year}
         </h1>
         <h1 className="mt-2">
-          Số lần hỏng động cơ: {motorIdentificationDetail?.engine_failures}
+          Thống kê hỏng hóc rất nghiêm trọng:{" "}
+          {motorIdentificationDetail?.very_serious_failures}
         </h1>
         <h1 className="mt-2">
-          Số lần hỏng khung máy: {motorIdentificationDetail?.frame_failures}
+          Thống kê hỏng hóc nghiêm trọng:{" "}
+          {motorIdentificationDetail?.serious_failures}
         </h1>
         <h1 className="mt-2">
-          Số lần hỏng phanh: {motorIdentificationDetail?.brake_failures}
+          Thống kê hỏng hóc khá nghiêm trọng:{" "}
+          {motorIdentificationDetail?.quite_serious_failures}
         </h1>
         <h1 className="mt-2">
-          Số lần hỏng săm, lốp: {motorIdentificationDetail?.tire_failures}
+          Thống kê hỏng hóc trung bình:{" "}
+          {motorIdentificationDetail?.medium_failures}
         </h1>
         <h1 className="mt-2">
-          Hỏng bộ phận khác: {motorIdentificationDetail?.other_failures}
+          Thống kê hỏng hóc nhẹ: {motorIdentificationDetail?.minor_failures}
         </h1>
       </div>
     </div>

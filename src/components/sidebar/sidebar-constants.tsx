@@ -9,7 +9,7 @@ export const sidebar_items = [
     icon: <LuHome />,
   },
   {
-    title: "Quản lý tours",
+    title: "Quản lý tour",
     path: "/tours",
     icon: <FaFlagCheckered />,
   },
