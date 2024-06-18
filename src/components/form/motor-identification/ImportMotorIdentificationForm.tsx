@@ -50,6 +50,7 @@ const ImportMotorIdentificationForm = ({
           name="fileUpload"
           id="fileUpload"
           type="file"
+          required
           onChange={handleChange}
         />
         <div className="flex justify-end gap-4">

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { tourService } from "@/services/api/tour";
 import Loading from "@/components/Loading";
 import { MdArrowBackIos } from "react-icons/md";
-import { formatCurrency } from "@/utils/common";
+import { formatCurrency, formatTime } from "@/utils/common";
 
 const TourDetail = ({ params }: { params: { id: string } }) => {
   const [tour, setTour] = useState<any>();
@@ -48,6 +48,10 @@ const TourDetail = ({ params }: { params: { id: string } }) => {
           <span className="text-primary font-semibold">
             {formatCurrency(tour?.price)}
           </span>
+        </p>
+        <p className="py-1">
+          Ngày xuất phát:{" "}
+          {tour?.startDates.map((date: Date) => formatTime(date)).join(", ")}
         </p>
       </div>
       {tour && (

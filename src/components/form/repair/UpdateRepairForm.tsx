@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useAppDispatch } from "@/store/hooks";
 import { updateRepair } from "@/store/features/repairSlice";
 import { toast } from "react-toastify";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const UpdateRepairForm = ({
   toggleModal,
@@ -50,17 +52,11 @@ const UpdateRepairForm = ({
           <div className="flex-between flex-wrap">
             <div className="basis-[48%] mb-4">
               <h1>Ngày bắt đầu</h1>
-              <input
-                type="date"
-                className="form-input w-full"
-                required
-                defaultValue={repairMotor.startDate.toString().split("T")[0]}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    startDate: new Date(e.target.value),
-                  })
-                }
+              <DatePicker
+                selected={formData.startDate}
+                onChange={(date) => {
+                  if (date) setFormData({ ...formData, startDate: date });
+                }}
               />
             </div>
             <div className="basis-[48%] mb-4">

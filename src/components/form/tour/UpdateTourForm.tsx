@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useAppDispatch } from "@/store/hooks";
 import { updateTour } from "@/store/features/tourSlice";
 import { toast } from "react-toastify";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const ItineraryFields = ({ onChange, item }: { onChange: any; item: any }) => {
   return (
@@ -61,6 +63,7 @@ const UpdateTourForm = ({
     duration: number;
     price: number;
     startLocation: string;
+    startDates: Date[];
     summary: string;
     imageCover: string;
     itinerary: {
@@ -74,6 +77,7 @@ const UpdateTourForm = ({
     duration: tour.duration,
     price: tour.price,
     startLocation: tour.startLocation,
+    startDates: tour.startDates,
     summary: tour.summary,
     imageCover: tour.imageCover,
     itinerary: tour.itinerary,
@@ -165,6 +169,20 @@ const UpdateTourForm = ({
               onChange={(e) =>
                 setFormData({ ...formData, startLocation: e.target.value })
               }
+            />
+          </div>
+          <div className="basis-[48%] mb-4">
+            <h1>Ngày xuất phát</h1>
+            <DatePicker
+              selectedDates={formData.startDates}
+              selectsMultiple
+              onChange={(dates) => {
+                if (dates) {
+                  setFormData({ ...formData, startDates: dates });
+                }
+              }}
+              shouldCloseOnSelect={false}
+              disabledKeyboardNavigation
             />
           </div>
           <div className="basis-[48%] mb-4">

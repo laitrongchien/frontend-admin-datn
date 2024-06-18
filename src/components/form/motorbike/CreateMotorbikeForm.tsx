@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useAppDispatch } from "@/store/hooks";
 import { toast } from "react-toastify";
+import { useAppDispatch } from "@/store/hooks";
 import { motorbikeService } from "@/services/api/motorbike";
 import { createMotorbike } from "@/store/features/motorbikeSlice";
 
@@ -40,7 +40,6 @@ const CreateMotorbikeForm = ({ toggleModal }: { toggleModal: () => void }) => {
     } catch (error) {
       toast.error("Có lỗi xảy ra, tên mẫu xe đã tồn tại");
     }
-    // console.log(formData);
   };
 
   const handleUploadImage = async (e: any) => {
@@ -83,13 +82,13 @@ const CreateMotorbikeForm = ({ toggleModal }: { toggleModal: () => void }) => {
           <div className="basis-[48%] mb-4">
             <h1>Phân loại</h1>
             <select
-              className="form-input w-full"
+              className="w-full"
               required
               onChange={(e) =>
                 setFormData({ ...formData, type: e.target.value })
               }
             >
-              <option>Chọn phân loại xe</option>
+              <option hidden>Chọn phân loại xe</option>
               <option value="manual">Xe tay côn</option>
               <option value="automatic">Xe ga</option>
               <option value="semi-automatic">Xe số</option>

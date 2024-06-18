@@ -27,6 +27,20 @@ body {
   }
 } */
 
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+  display: block;
+  width: 100%;
+  outline: none;
+}
+
+.react-datepicker-wrapper input {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 6px;
+}
+
 .pdf-export {
   font-size: 32px;
 }
@@ -57,7 +71,15 @@ body {
 }
 
 .form-input {
-  @apply p-2.5 bg-white border border-gray-300 rounded-lg outline-1 outline-primary;
+  @apply p-1.5 bg-white border border-gray-300 rounded-lg outline-1 outline-primary;
+}
+
+select {
+  @apply p-1.5 h-[38px] bg-white border border-gray-300 rounded-lg;
+}
+
+select:focus {
+  @apply outline-1 outline-primary;
 }
 
 @media (min-width: 992px) {
