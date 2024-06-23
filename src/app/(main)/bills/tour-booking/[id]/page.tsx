@@ -64,7 +64,10 @@ const TourBookingDetail = ({ params }: { params: { id: string } }) => {
       <div className="mt-8 flex justify-between">
         {bookingTour && (
           <Image
-            src={bookingTour?.tour.imageCover}
+            src={
+              bookingTour?.tour?.imageCover ||
+              bookingTour?.tourHistory?.imageCover
+            }
             alt="tour-img"
             width={768}
             height={375}
@@ -73,9 +76,15 @@ const TourBookingDetail = ({ params }: { params: { id: string } }) => {
         )}
 
         <div>
-          <h1 className="text-lg font-semibold">{bookingTour?.tour.name}</h1>
+          <h1 className="text-lg font-semibold">
+            {bookingTour?.tour?.name || bookingTour?.tourHistory?.name}
+          </h1>
           <p className="py-1 text-right">
-            Giá: {formatCurrency(bookingTour?.tour.price)}/ người
+            Giá:{" "}
+            {formatCurrency(
+              bookingTour?.tour?.price || bookingTour?.tourHistory?.price
+            )}
+            / người
           </p>
           <p className="py-1 text-right">
             Số lượng người: {bookingTour?.numberPeople}

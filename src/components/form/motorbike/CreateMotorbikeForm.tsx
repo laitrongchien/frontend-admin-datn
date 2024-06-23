@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useAppDispatch } from "@/store/hooks";
 import { motorbikeService } from "@/services/api/motorbike";
 import { createMotorbike } from "@/store/features/motorbikeSlice";
+import QuillEditor from "@/components/editor/QuillEditor";
 
 const CreateMotorbikeForm = ({ toggleModal }: { toggleModal: () => void }) => {
   const dispatch = useAppDispatch();
@@ -161,12 +162,18 @@ const CreateMotorbikeForm = ({ toggleModal }: { toggleModal: () => void }) => {
         </div>
         <div className="mt-2">
           <h1>Thêm thông tin mô tả</h1>
-          <textarea
+          {/* <textarea
             className="form-input w-full"
             name="description"
             rows={2}
             onChange={(e) =>
               setFormData({ ...formData, description: e.target.value })
+            }
+          /> */}
+          <QuillEditor
+            content={formData.description}
+            setContent={(value: any) =>
+              setFormData({ ...formData, description: value })
             }
           />
         </div>

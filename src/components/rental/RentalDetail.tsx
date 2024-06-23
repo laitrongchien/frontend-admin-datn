@@ -130,9 +130,16 @@ const RentalDetail = ({
         <div className="mt-4">
           <h1 className="font-semibold">Thông tin thuê xe</h1>
           {motorRentalDetail?.motorbikes.map((data: any) => (
-            <div key={data._id}>
-              <p>Tên xe: {data.motorbike.name}</p>
-              <p>Giá thuê: {formatCurrency(data.motorbike.price)}</p>
+            <div key={data?._id}>
+              <p>
+                Tên xe: {data.motorbike?.name || data.motorbikeHistory?.name}
+              </p>
+              <p>
+                Giá thuê:{" "}
+                {formatCurrency(
+                  data.motorbike?.price || data.motorbikeHistory?.price
+                )}
+              </p>
               <p>Ngày nhận: {formatTime(data.startDate)}</p>
               <p>Ngày dự kiến trả: {formatTime(data.finishDate)}</p>
               <p>Số lượng xe thuê: {data.numMotorbikes}</p>

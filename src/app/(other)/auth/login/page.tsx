@@ -74,14 +74,14 @@ const Login = () => {
                 <FaRegEye
                   size={22}
                   color="#888"
-                  className="absolute top-3 right-2 cursor-pointer"
+                  className="absolute top-1/2 -translate-y-1/2 right-2 cursor-pointer"
                   onClick={() => setPasswordShown(false)}
                 />
               ) : (
                 <FaRegEyeSlash
                   size={22}
                   color="#888"
-                  className="absolute top-3 right-2 cursor-pointer"
+                  className="absolute top-1/2 -translate-y-1/2 right-2 cursor-pointer"
                   onClick={() => setPasswordShown(true)}
                 />
               )}

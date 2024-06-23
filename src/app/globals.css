@@ -21,11 +21,17 @@ body {
   background-color: #eeeeee;
 }
 
-/* @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-} */
+ol {
+  list-style: decimal;
+  list-style-position: inside;
+  margin-left: 16px;
+}
+
+ul {
+  list-style: disc;
+  list-style-position: inside;
+  margin-left: 16px;
+}
 
 .react-datepicker-wrapper,
 .react-datepicker__input-container,
@@ -71,11 +77,11 @@ body {
 }
 
 .form-input {
-  @apply p-1.5 bg-white border border-gray-300 rounded-lg outline-1 outline-primary;
+  @apply p-1.5 bg-white border border-gray-400 rounded-lg outline-1 outline-primary;
 }
 
 select {
-  @apply p-1.5 h-[38px] bg-white border border-gray-300 rounded-lg;
+  @apply p-1.5 h-[38px] bg-white border border-gray-400 rounded-lg;
 }
 
 select:focus {

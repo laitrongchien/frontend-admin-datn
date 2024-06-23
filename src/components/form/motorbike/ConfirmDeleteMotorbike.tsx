@@ -12,13 +12,13 @@ const ConfirmDeleteMotorbike = ({
   const dispatch = useAppDispatch();
   const handleDeleteMotorbike = () => {
     dispatch(deleteMotorbike({ id: motorbike._id }));
-    toast.success("Xóa xe motor khỏi danh sách thành công");
+    toast.success("Xóa xe máy khỏi danh sách thành công");
     toggleModal();
   };
 
   return (
     <div className="p-4">
-      <h1 className="font-semibold">Xóa xe motor</h1>
+      <h1 className="font-semibold">Xóa xe máy</h1>
       <h1 className="mt-2 mb-6">
         Bạn chắc chắn muốn xóa mẫu xe này khỏi danh sách?
       </h1>

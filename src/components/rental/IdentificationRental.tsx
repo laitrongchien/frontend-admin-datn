@@ -39,16 +39,17 @@ const IdentificationRental = ({
   }, [motorRentalDetail?.motorbikes]);
 
   useEffect(() => {
-    if (motorRentalDetail?.motorbikes[0].motorbike._id) {
-      const fetchAllAvailableMotor = async () => {
-        const res = await motorIdentificationService.getAllAvailableMotor(
-          motorRentalDetail?.motorbikes[0].motorbike._id,
-          motorRentalDetail?.location
-        );
-        setAvailableMotors(res.data);
-      };
-      fetchAllAvailableMotor();
+    if (!motorRentalDetail?.motorbikes[0]?.motorbike?._id) {
+      return;
     }
+    const fetchAllAvailableMotor = async () => {
+      const res = await motorIdentificationService.getAllAvailableMotor(
+        motorRentalDetail?.motorbikes[0].motorbike._id,
+        motorRentalDetail?.location
+      );
+      setAvailableMotors(res.data);
+    };
+    fetchAllAvailableMotor();
   }, [motorRentalDetail?.location, motorRentalDetail?.motorbikes]);
 
   const handleUpdateIdentificationsRental = async () => {
@@ -83,7 +84,9 @@ const IdentificationRental = ({
       <h1 className="mt-4 font-semibold">Biển số xe cho thuê</h1>
       {motorRentalDetail?.motorbikes.map((data: any) => (
         <div key={data._id}>
-          <p className="my-2">Tên xe: {data.motorbike.name}</p>
+          <p className="my-2">
+            Tên xe: {data.motorbike?.name || data.motorbikeHistory?.name}
+          </p>
           {[...Array(data.numMotorbikes)].map((_, index) => (
             <div key={index}>
               <select

@@ -5,6 +5,7 @@ import { useAppDispatch } from "@/store/hooks";
 import { toast } from "react-toastify";
 import { motorbikeService } from "@/services/api/motorbike";
 import { updateMotorbike } from "@/store/features/motorbikeSlice";
+import QuillEditor from "@/components/editor/QuillEditor";
 
 const UpdateMotorbikeForm = ({
   toggleModal,
@@ -41,12 +42,11 @@ const UpdateMotorbikeForm = ({
     e.preventDefault();
     try {
       await dispatch(updateMotorbike({ id: motorbike._id, formData })).unwrap();
-      toast.success("Cập nhật thông tin xe motor thành công");
+      toast.success("Cập nhật thông tin xe máy thành công");
       toggleModal();
     } catch (error) {
       toast.error("Có lỗi xảy ra, tên mẫu xe đã tồn tại");
     }
-    // console.log(formData.fuelCapacity);
   };
 
   const handleUploadImage = async (e: any) => {
@@ -165,14 +165,10 @@ const UpdateMotorbikeForm = ({
         </div>
         <div className="mt-2">
           <h1>Thêm thông tin mô tả</h1>
-          <textarea
-            className="form-input w-full"
-            name="description"
-            required
-            value={formData.description}
-            rows={2}
-            onChange={(e) =>
-              setFormData({ ...formData, description: e.target.value })
+          <QuillEditor
+            content={formData.description}
+            setContent={(value: any) =>
+              setFormData({ ...formData, description: value })
             }
           />
         </div>
