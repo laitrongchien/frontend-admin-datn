@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motorbikeService } from "@/services/api/motorbike";
+import { toast } from "react-toastify";
 
 const MaintainSchedule = () => {
   const [motorbikes, setMotorbikes] = useState([]);
@@ -32,9 +33,17 @@ const MaintainSchedule = () => {
     setEditSchedule(updatedSchedule);
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log(editSchedule);
+    try {
+      await motorbikeService.updateMaintainSchedule(
+        motorbike._id,
+        editSchedule
+      );
+      toast.success("Cập nhật thành công");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

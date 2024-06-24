@@ -21,13 +21,13 @@ body {
   background-color: #eeeeee;
 }
 
-ol {
+.motor-description ol {
   list-style: decimal;
   list-style-position: inside;
   margin-left: 16px;
 }
 
-ul {
+.motor-description ul {
   list-style: disc;
   list-style-position: inside;
   margin-left: 16px;

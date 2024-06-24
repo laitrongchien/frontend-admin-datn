@@ -36,7 +36,11 @@ const NotificationList = () => {
   }, [currentPage]);
 
   const handleNotificationClick = async (notification: any) => {
-    router.push(`/bills/${notification.notificationType}`);
+    const navigateUrl =
+      notification.notificationType !== "maintainance"
+        ? `/bills/${notification.notificationType}`
+        : "/repairs";
+    router.push(navigateUrl);
     if (!notification.isRead) {
       try {
         await notificationService.updateReadStatus(notification._id, true);
@@ -68,7 +72,11 @@ const NotificationList = () => {
         >
           <div className="flex gap-8">
             <Image
-              src={notification.user.avatar}
+              src={
+                notification.notificationType === "maintainance"
+                  ? "https://res.cloudinary.com/dufuwsrue/image/upload/v1719167316/motortour/images/other/download_mayo4w.png"
+                  : notification.user?.avatar
+              }
               alt="avatar"
               width={40}
               height={40}
@@ -76,7 +84,9 @@ const NotificationList = () => {
             />
             <div className="text-left">
               <span className="text-sm font-semibold">
-                {notification.user.name}
+                {notification.notificationType === "maintainance"
+                  ? "Thông tin bảo dưỡng"
+                  : notification.user?.name}
               </span>
 
               <p className="break-words text-[#232e3c]">

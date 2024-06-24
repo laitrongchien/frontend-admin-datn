@@ -48,7 +48,11 @@ const DropdownNotification = () => {
   }, []);
 
   const handleNotificationClick = async (notification: any) => {
-    router.push(`/bills/${notification.notificationType}`);
+    const navigateUrl =
+      notification.notificationType !== "maintainance"
+        ? `/bills/${notification.notificationType}`
+        : "/repairs";
+    router.push(navigateUrl);
     if (!notification.isRead) {
       try {
         await notificationService.updateReadStatus(notification._id, true);

@@ -33,6 +33,13 @@ const getMotorbikeById = async (id: string) => {
   return await axios.get(`/motorbike/get-motorbike/${id}`);
 };
 
+const updateMaintainSchedule = async (
+  id: string,
+  data: { type: string; quantity: number; unit: string }[]
+) => {
+  return await axios.put(`/motorbike/update-motor-maintain-schedule/${id}`);
+};
+
 export const motorbikeService = {
   getAllMotorbikes,
   getMotorbikeById,
@@ -40,4 +47,5 @@ export const motorbikeService = {
   updateMotorbike,
   deleteMotorbike,
   uploadMotorbikeImage,
+  updateMaintainSchedule,
 };
