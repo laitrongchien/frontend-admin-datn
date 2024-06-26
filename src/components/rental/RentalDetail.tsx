@@ -6,7 +6,7 @@ import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { rentalService } from "@/services/api/rental";
 import { motorIdentificationService } from "@/services/api/identification";
-import { formatCurrency, formatTime, formatTimeDate } from "@/utils/common";
+import { formatCurrency, formatDate, formatDateTime } from "@/utils/common";
 import Loading from "../Loading";
 
 const RentalDetail = ({
@@ -140,11 +140,11 @@ const RentalDetail = ({
                   data.motorbike?.price || data.motorbikeHistory?.price
                 )}
               </p>
-              <p>Ngày nhận: {formatTime(data.startDate)}</p>
-              <p>Ngày dự kiến trả: {formatTime(data.finishDate)}</p>
+              <p>Ngày nhận: {formatDate(data.startDate)}</p>
+              <p>Ngày dự kiến trả: {formatDate(data.finishDate)}</p>
               <p>Số lượng xe thuê: {data.numMotorbikes}</p>
               <p>
-                Đặt thuê xe lúc: {formatTimeDate(motorRentalDetail.createdAt)}
+                Đặt thuê xe lúc: {formatDateTime(motorRentalDetail.createdAt)}
               </p>
               {data.identifications.length !== 0 && (
                 <h1 className="mt-2 font-semibold">

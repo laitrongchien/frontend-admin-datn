@@ -6,7 +6,7 @@ import Image from "next/image";
 import { MdArrowBackIos } from "react-icons/md";
 import Loading from "@/components/Loading";
 import { bookingService } from "@/services/api/booking";
-import { formatCurrency, formatTime } from "@/utils/common";
+import { formatCurrency, formatDate } from "@/utils/common";
 import { toast } from "react-toastify";
 
 const TourBookingDetail = ({ params }: { params: { id: string } }) => {
@@ -90,7 +90,7 @@ const TourBookingDetail = ({ params }: { params: { id: string } }) => {
             Số lượng người: {bookingTour?.numberPeople}
           </p>
           <p className="py-1 text-right">
-            Ngày khởi hành: {formatTime(bookingTour?.startDate)}
+            Ngày khởi hành: {formatDate(bookingTour?.startDate)}
           </p>
           <p className="py-1 text-right">
             Tên người đặt: {bookingTour?.user.name}

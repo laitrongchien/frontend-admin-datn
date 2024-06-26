@@ -9,12 +9,12 @@ export const sidebar_items = [
     icon: <LuHome />,
   },
   {
-    title: "Quản lý tour",
+    title: "Quản lý tour xe máy",
     path: "/tours",
     icon: <FaFlagCheckered />,
   },
   {
-    title: "Quản lý mẫu xe",
+    title: "Quản lý mẫu xe máy",
     path: "/motorbikes",
     icon: <FaMotorcycle size={18} />,
   },

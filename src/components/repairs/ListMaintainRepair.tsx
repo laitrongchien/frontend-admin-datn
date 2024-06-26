@@ -8,7 +8,7 @@ import CreateRepairForm from "@/components/form/repair/CreateRepairForm";
 import UpdateRepairForm from "@/components/form/repair/UpdateRepairForm";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { fetchRepairs } from "@/store/features/repairSlice";
-import { formatTime, formatCurrency } from "@/utils/common";
+import { formatDate, formatCurrency } from "@/utils/common";
 import { FaEdit } from "react-icons/fa";
 import { colors } from "@/constants";
 
@@ -30,7 +30,7 @@ const ListMaintainRepair = () => {
   const columns = [
     {
       name: "Ngày bắt đầu",
-      selector: (row: any) => formatTime(row?.startDate),
+      selector: (row: any) => formatDate(row?.startDate),
       sortable: true,
     },
     {

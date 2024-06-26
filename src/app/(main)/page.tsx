@@ -143,8 +143,8 @@ const Dashboard = () => {
           />
         </div>
       </div>
-      <div className="mt-4 h-[500px] bg-white rounded-lg border border-gray-300 py-12">
-        <AppLineChart />
+      <div className="mt-4 h-[500px] bg-white rounded-lg border border-gray-300 pt-6 pb-12">
+        <AppLineChart bookingData={bookings} rentalData={rentals} />
       </div>
     </>
   );

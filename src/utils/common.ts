@@ -6,7 +6,7 @@ export const formatCurrency = (value: number) => {
   return formatter.format(1000 * value);
 };
 
-export const formatTime = (dateString: any) => {
+export const formatDate = (dateString: any) => {
   const date = new Date(dateString);
   const day = ("0" + date.getDate()).slice(-2);
   const month = ("0" + (date.getMonth() + 1)).slice(-2);
@@ -14,7 +14,7 @@ export const formatTime = (dateString: any) => {
   return `${day}-${month}-${year}`;
 };
 
-export const formatTimeDate = (dateString: any) => {
+export const formatDateTime = (dateString: any) => {
   const date = new Date(dateString);
   const day = ("0" + date.getDate()).slice(-2);
   const month = ("0" + (date.getMonth() + 1)).slice(-2);
