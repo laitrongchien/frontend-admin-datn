@@ -138,7 +138,6 @@ const UpdateMotorIdentificationForm = ({
             <input
               type="number"
               className="form-input w-full"
-              required
               value={formData.very_serious_failures}
               onChange={(e) =>
                 setFormData({
@@ -153,7 +152,6 @@ const UpdateMotorIdentificationForm = ({
             <input
               type="number"
               className="form-input w-full"
-              required
               value={formData.serious_failures}
               onChange={(e) =>
                 setFormData({
@@ -168,7 +166,6 @@ const UpdateMotorIdentificationForm = ({
             <input
               type="number"
               className="form-input w-full"
-              required
               value={formData.quite_serious_failures}
               onChange={(e) =>
                 setFormData({
@@ -183,7 +180,6 @@ const UpdateMotorIdentificationForm = ({
             <input
               type="number"
               className="form-input w-full"
-              required
               value={formData.medium_failures}
               onChange={(e) =>
                 setFormData({
@@ -198,7 +194,6 @@ const UpdateMotorIdentificationForm = ({
             <input
               type="number"
               className="form-input w-full"
-              required
               value={formData.minor_failures}
               onChange={(e) =>
                 setFormData({

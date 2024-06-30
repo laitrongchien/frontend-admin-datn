@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaRegEye } from "react-icons/fa";
 import { colors } from "@/constants";
+import { formatDate } from "@/utils/common";
 
 const TourBooking = () => {
   const router = useRouter();
@@ -68,31 +69,36 @@ const TourBooking = () => {
       ),
       wrap: true,
     },
+    // {
+    //   name: "Trạng thái",
+    //   cell: (row: any) => (
+    //     <h1
+    //       className={`
+    //           ${
+    //             row?.status === "completed"
+    //               ? "text-success"
+    //               : row?.status === "started"
+    //               ? "text-primary"
+    //               : row?.status === "not-started"
+    //               ? "text-error"
+    //               : "text-pending"
+    //           } font-semibold
+    //         `}
+    //     >
+    //       {row?.status === "completed"
+    //         ? "Đã hoàn thành"
+    //         : row?.status === "started"
+    //         ? "Đã tham gia"
+    //         : row?.status === "not-started"
+    //         ? "Không tham gia"
+    //         : "Chưa khởi hành"}
+    //     </h1>
+    //   ),
+    //   wrap: true,
+    // },
     {
-      name: "Trạng thái",
-      cell: (row: any) => (
-        <h1
-          className={`
-              ${
-                row?.status === "completed"
-                  ? "text-success"
-                  : row?.status === "started"
-                  ? "text-primary"
-                  : row?.status === "not-started"
-                  ? "text-error"
-                  : "text-pending"
-              } font-semibold
-            `}
-        >
-          {row?.status === "completed"
-            ? "Đã hoàn thành"
-            : row?.status === "started"
-            ? "Đã tham gia"
-            : row?.status === "not-started"
-            ? "Không tham gia"
-            : "Chưa khởi hành"}
-        </h1>
-      ),
+      name: "Ngày khởi hành",
+      cell: (row: any) => <span>{formatDate(row?.startDate)}</span>,
       wrap: true,
     },
     {

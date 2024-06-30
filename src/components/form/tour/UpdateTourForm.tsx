@@ -63,7 +63,7 @@ const UpdateTourForm = ({
     duration: number;
     price: number;
     startLocation: string;
-    startDates: Date[];
+    startDate: Date;
     summary: string;
     imageCover: string;
     itinerary: {
@@ -77,7 +77,7 @@ const UpdateTourForm = ({
     duration: tour.duration,
     price: tour.price,
     startLocation: tour.startLocation,
-    startDates: tour.startDates,
+    startDate: tour.startDate,
     summary: tour.summary,
     imageCover: tour.imageCover,
     itinerary: tour.itinerary,
@@ -174,15 +174,12 @@ const UpdateTourForm = ({
           <div className="basis-[48%] mb-4">
             <h1>Ngày xuất phát</h1>
             <DatePicker
-              selectedDates={formData.startDates}
-              selectsMultiple
-              onChange={(dates) => {
-                if (dates) {
-                  setFormData({ ...formData, startDates: dates });
+              selected={formData.startDate}
+              onChange={(date) => {
+                if (date) {
+                  setFormData({ ...formData, startDate: date });
                 }
               }}
-              shouldCloseOnSelect={false}
-              disabledKeyboardNavigation
             />
           </div>
           <div className="basis-[48%] mb-4">

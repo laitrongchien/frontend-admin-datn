@@ -37,10 +37,18 @@ const deleteMotorIdentification = async (id: string) => {
   return await axios.delete(`identification/delete-motor-identification/${id}`);
 };
 
-const getAllAvailableMotor = async (motorbikeId: string, location: string) => {
-  return await axios.get(
-    `/identification/get-all-available-motor/${motorbikeId}?location=${location}`
-  );
+const getAllAvailableMotor = async (
+  motorbikeId: string,
+  location: string,
+  isForTour?: boolean
+) => {
+  let url = `/identification/get-all-available-motor/${motorbikeId}?location=${location}`;
+  if (isForTour) {
+    url += `&isForTour=true`;
+  }
+  console.log(url);
+
+  return await axios.get(url);
 };
 
 export const motorIdentificationService = {

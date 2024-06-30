@@ -53,7 +53,7 @@ const CreateTourForm = ({ toggleModal }: { toggleModal: () => void }) => {
     duration: number;
     price: number;
     startLocation: string;
-    startDates: Date[];
+    startDate: Date;
     summary: string;
     imageCover: string;
     itinerary: {
@@ -67,7 +67,7 @@ const CreateTourForm = ({ toggleModal }: { toggleModal: () => void }) => {
     duration: 0,
     price: 0,
     startLocation: "",
-    startDates: [new Date()],
+    startDate: new Date(),
     summary: "",
     imageCover: "",
     itinerary: [],
@@ -173,15 +173,12 @@ const CreateTourForm = ({ toggleModal }: { toggleModal: () => void }) => {
           <div className="basis-[48%] mb-4">
             <h1>Ngày xuất phát</h1>
             <DatePicker
-              selectedDates={formData.startDates}
-              selectsMultiple
-              onChange={(dates) => {
-                if (dates) {
-                  setFormData({ ...formData, startDates: dates });
+              selected={formData.startDate}
+              onChange={(date) => {
+                if (date) {
+                  setFormData({ ...formData, startDate: date });
                 }
               }}
-              shouldCloseOnSelect={false}
-              disabledKeyboardNavigation
             />
           </div>
           <div className="basis-[48%] mb-4">
