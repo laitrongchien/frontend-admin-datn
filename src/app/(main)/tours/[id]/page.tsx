@@ -49,10 +49,7 @@ const TourDetail = ({ params }: { params: { id: string } }) => {
             {formatCurrency(tour?.price)}
           </span>
         </p>
-        <p className="py-1">
-          Ngày xuất phát:{" "}
-          {tour?.startDates.map((date: Date) => formatDate(date)).join(", ")}
-        </p>
+        <p className="py-1">Ngày xuất phát: {tour?.startDate}</p>
       </div>
       {tour && (
         <div className="flex-center">

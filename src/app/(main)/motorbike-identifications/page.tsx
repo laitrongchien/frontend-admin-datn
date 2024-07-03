@@ -181,7 +181,7 @@ const MotorbikeIdentifications = () => {
 
   return (
     <div className="bg-white p-4 min-h-[calc(100vh-80px)] rounded-xl border border-gray-300">
-      <h1 className="font-semibold">Tình trạng xe hiện tại</h1>
+      <h1 className="font-semibold">Kho xe hiện tại</h1>
       <div className="mt-2 flex gap-2">
         <button
           className="px-4 py-2 bg-primary rounded-md text-white"

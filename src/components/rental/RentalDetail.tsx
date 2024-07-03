@@ -63,7 +63,7 @@ const RentalDetail = ({
         motorRentalDetail?._id,
         rentalStatus
       );
-      if (rentalStatus === "not-received" || rentalStatus === "returned")
+      if (rentalStatus === "returned")
         await Promise.all(
           motorRentalDetail?.motorbikes[0].identifications.map(
             async (identification: string) => {

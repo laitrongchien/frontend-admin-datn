@@ -34,7 +34,7 @@ export const sidebar_items = [
     ],
   },
   {
-    title: "Quản lý tình trạng xe",
+    title: "Quản lý kho xe",
     path: "/motorbike-identifications",
     icon: <MdOutlineSync size={20} />,
   },
