@@ -7,6 +7,7 @@ interface SimpleLayoutProps {
 export const metadata: Metadata = {
   title: "Admin Authentication",
   description: "Admin Authentication",
+  icons: "/favicon.ico",
 };
 
 export default function SimpleLayout({ children }: SimpleLayoutProps) {
