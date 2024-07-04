@@ -1,9 +1,8 @@
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import Image from "next/image";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { LuLogOut, LuUser } from "react-icons/lu";
+import { LuLogOut } from "react-icons/lu";
 import { logout } from "@/store/features/authSlice";
 import Dropdown from "./Dropdown";
 import { resetTourState } from "@/store/features/tourSlice";
@@ -44,12 +43,12 @@ const DropdownUser = () => {
       }
     >
       <ul className="flex flex-col w-44">
-        <li className="px-4 py-2 hover:bg-gray-100 rounded-md">
+        {/* <li className="px-4 py-2 hover:bg-gray-100 rounded-md">
           <Link href={"/profile/info"} className="flex items-center w-full">
             <LuUser />
             <p className="ml-2">Tài khoản</p>
           </Link>
-        </li>
+        </li> */}
         <li className="py-2 px-4 hover:bg-gray-100 rounded-md">
           <button className="flex items-center w-full" onClick={handleLogout}>
             <LuLogOut />
