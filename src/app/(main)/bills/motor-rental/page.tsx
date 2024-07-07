@@ -76,7 +76,7 @@ const MotorRental = () => {
                 ? "text-success"
                 : row?.status === "received"
                 ? "text-primary"
-                : row?.status === "not-received"
+                : row?.status === "not-received" || row?.status === "cancel"
                 ? "text-error"
                 : "text-pending"
             } font-semibold
@@ -88,6 +88,8 @@ const MotorRental = () => {
             ? "Đã nhận xe"
             : row?.status === "not-received"
             ? "Không nhận xe"
+            : row?.status === "cancel"
+            ? "Hủy đơn thuê"
             : "Chờ nhận xe"}
         </h1>
       ),

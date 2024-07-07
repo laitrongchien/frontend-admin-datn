@@ -140,11 +140,25 @@ const TourBookingDetail = ({ params }: { params: { id: string } }) => {
                 </span>
               </p>
             )}
+          {bookingTour?.status === "cancel" && (
+            <p className="text-right">
+              Hoàn tiền:{" "}
+              <span className="font-semibold min-w-[85px] inline-block">
+                {bookingTour?.paymentType === "payAll"
+                  ? formatCurrency(bookingTour?.totalPrice)
+                  : formatCurrency(bookingTour?.totalPrice * 0.2)}
+              </span>
+            </p>
+          )}
         </div>
       </div>
       <h1 className="mt-4">
         Trạng thái tour:
-        {bookingTour?.status !== "completed" ? (
+        {bookingTour?.status === "completed" ? (
+          <span className="text-success font-semibold">Đã hoàn thành</span>
+        ) : bookingTour?.status === "cancel" ? (
+          <span className="text-error font-semibold">Hủy đơn thuê</span>
+        ) : (
           <select
             className="form-input w-40 ml-6"
             value={bookingStatus}
@@ -155,8 +169,6 @@ const TourBookingDetail = ({ params }: { params: { id: string } }) => {
             <option value="not-started">Không tham gia</option>
             <option value="completed">Đã hoàn thành</option>
           </select>
-        ) : (
-          <span className="text-success font-semibold">Đã hoàn thành</span>
         )}
       </h1>
       <button

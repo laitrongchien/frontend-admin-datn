@@ -173,7 +173,11 @@ const RentalDetail = ({
             </h1>
             <div className="mt-4">
               <span>Trạng thái đơn thuê:</span>
-              {motorRentalDetail?.status !== "returned" ? (
+              {motorRentalDetail?.status === "returned" ? (
+                <span className="text-success font-semibold">Đã trả xe</span>
+              ) : motorRentalDetail?.status === "cancel" ? (
+                <span className="text-error font-semibold">Hủy đơn thuê</span>
+              ) : (
                 <select
                   className="form-input w-60 ml-6"
                   value={rentalStatus}
@@ -184,8 +188,6 @@ const RentalDetail = ({
                   <option value="not-received">Không nhận xe</option>
                   <option value="returned">Đã trả xe</option>
                 </select>
-              ) : (
-                <span className="text-success font-semibold">Đã trả xe</span>
               )}
             </div>
             <p className="mt-4 max-w-[500px] break-words">
@@ -235,6 +237,14 @@ const RentalDetail = ({
                 {formatCurrency(payRemain)}
               </span>
             </p>
+            {motorRentalDetail?.status === "cancel" && (
+              <p className="text-right">
+                Hoàn tiền:{" "}
+                <span className="font-semibold min-w-[85px] inline-block">
+                  {formatCurrency(payOnline)}
+                </span>
+              </p>
+            )}
           </div>
         </div>
       </div>
