@@ -110,7 +110,11 @@ const MotorbikeIdentifications = () => {
         <h1
           className={`
         ${
-          row?.status === "normal" ? "text-success" : "text-error"
+          row?.status === "normal"
+            ? "text-success"
+            : row?.status === "maintainance"
+            ? "text-pending"
+            : "text-error"
         } font-semibold
       `}
         >
