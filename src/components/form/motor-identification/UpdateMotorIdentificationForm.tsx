@@ -51,7 +51,7 @@ const UpdateMotorIdentificationForm = ({
   return (
     <div className="w-[800px] p-4">
       <h1 className="text-2xl font-semibold text-center">
-        Cập nhật xe theo biển số
+        Cập nhật tình trạng xe trong kho xe
       </h1>
       <form className="mt-4" onSubmit={handleSubmit}>
         <div className="flex-between flex-wrap">
@@ -131,6 +131,7 @@ const UpdateMotorIdentificationForm = ({
               <option value="brake_failure">Hỏng phanh</option>
               <option value="tire_failure">Hỏng săm, lốp</option>
               <option value="other_failure">Hỏng bộ phận khác</option>
+              <option value="maintainance">Đang bảo dưỡng</option>
             </select>
           </div>
           <div className="basis-[48%] mb-4">

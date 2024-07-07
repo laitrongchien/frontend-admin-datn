@@ -116,6 +116,8 @@ const MotorbikeIdentifications = () => {
         >
           {row?.status === "normal"
             ? "Bình thường"
+            : row?.status === "maintainance"
+            ? "Đang bảo dưỡng"
             : row?.status === "engine_failure"
             ? "Hỏng động cơ"
             : row?.status === "frame_failure"
@@ -225,11 +227,11 @@ const MotorbikeIdentifications = () => {
         >
           <option value="">Tình trạng</option>
           <option value="normal">Bình thường</option>
+          <option value="maintainance">Đang bảo dưỡng</option>
           <option value="engine_failure">Hỏng động cơ</option>
           <option value="frame_failure">Hỏng khung máy</option>
           <option value="brake_failure">Hỏng phanh</option>
           <option value="tire_failure">Hỏng săm, lốp</option>
-          <option value="other_failure">Hỏng bộ phận khác</option>
         </select>
         <select
           className="form-input w-52"

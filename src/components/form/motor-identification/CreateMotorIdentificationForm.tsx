@@ -43,7 +43,7 @@ const CreateMotorIdentificationForm = ({
     e.preventDefault();
     try {
       await dispatch(createMotorIdentification(formData)).unwrap();
-      toast.success("Thêm mới biển số thành công");
+      toast.success("Thêm mới xe vào kho xe thành công");
       toggleModal();
     } catch (error) {
       toast.error("Có lỗi xảy ra");
@@ -69,7 +69,7 @@ const CreateMotorIdentificationForm = ({
   return (
     <div className="w-[800px] p-4">
       <h1 className="text-2xl font-semibold text-center">
-        Thêm mới xe theo biển số
+        Thêm mới xe vào kho xe
       </h1>
       <form className="mt-4" onSubmit={handleSubmit}>
         <div className="flex-between flex-wrap">
