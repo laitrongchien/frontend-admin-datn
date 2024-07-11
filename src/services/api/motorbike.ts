@@ -37,7 +37,9 @@ const updateMaintainSchedule = async (
   id: string,
   data: { type: string; quantity: number; unit: string }[]
 ) => {
-  return await axios.put(`/motorbike/update-motor-maintain-schedule/${id}`);
+  return await axios.put(`/motorbike/update-motor-maintain-schedule/${id}`, {
+    maintainSchedule: data,
+  });
 };
 
 export const motorbikeService = {
