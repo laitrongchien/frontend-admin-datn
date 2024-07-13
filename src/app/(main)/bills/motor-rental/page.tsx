@@ -13,6 +13,7 @@ const MotorRental = () => {
   const [motorbikeRentals, setMotorbikeRentals] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchPhone, setSearchPhone] = useState("");
   const [paymentType, setPaymentType] = useState("");
   const [status, setStatus] = useState("");
 
@@ -20,6 +21,7 @@ const MotorRental = () => {
     .filter((rental: any) =>
       rental.user.email.toLowerCase().includes(searchTerm.toLowerCase())
     )
+    .filter((rental: any) => rental?.phone?.includes(searchPhone))
     .filter((rental: any) =>
       paymentType ? rental.paymentType === paymentType : true
     )
@@ -47,6 +49,11 @@ const MotorRental = () => {
     {
       name: "Email",
       selector: (row: any) => row?.user.email,
+      wrap: true,
+    },
+    {
+      name: "SĐT",
+      selector: (row: any) => row?.phone,
       wrap: true,
     },
     {
@@ -126,6 +133,13 @@ const MotorRental = () => {
           placeholder="Tìm kiếm theo email"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <input
+          type="text"
+          className="form-input w-48"
+          placeholder="Tìm kiếm theo SĐT"
+          value={searchPhone}
+          onChange={(e) => setSearchPhone(e.target.value)}
         />
         <select
           className="form-input w-52"
